@@ -1,0 +1,52 @@
+/*
+$http.get('http://localhost:3000/api/harvesters/pressure').success(function (data, status) {
+
+    var press = [];
+    for (var i = 0; i < data.length; i++) {
+        press.push(data[i].pressure);   
+    }
+
+    var time = [];
+    for (var i = 0; i < data.length; i++) {
+        time.push(data[i].createdAt);
+    }
+
+    $scope.renderChart = {
+        chart: {
+            type: 'line'
+        },
+        xAxis: {
+            categories: time
+        },
+        series: [{
+            data: score
+        }],
+        legend: {
+            enabled: false
+        }
+    };
+}).error("error message");
+$timeout($scope.fetch, 1000);
+
+var app = angular.module('charts', []);
+
+app.directive('highchart', function () {
+return {
+    restrict: 'E',
+    template: '<div></div>',
+    replace: true,
+
+    link: function (scope, element, attrs) {
+
+        scope.$watch(function () { return attrs.chart; }, function () {
+
+            if (!attrs.chart) return;
+
+            var charts = JSON.parse(attrs.chart);
+
+            $(element[0]).highcharts(charts);
+
+        });
+    }
+};
+});*/

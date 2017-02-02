@@ -1,0 +1,225 @@
+login as: admin
+admin@mei-eilab-srv.rd.tut.fi's password:
+Last login: Thu Nov  3 19:29:26 2016 from mec38-pc.intra.tut.fi
+[admin@mei-eilab-srv ~]$ ls -l
+total 8
+drwxrwxr-x. 9 admin admin 4096 Nov  3 17:10 main app
+drwxrwxr-x. 3 admin admin   25 Apr 18  2016 MEAN Stack
+drwxrwxr-x. 4 admin admin   97 Apr 18  2016 mongo
+-rw-r--r--. 1 root  root  2450 Aug 23 15:47 npm-debug.log
+drwxrwxr-x. 4 admin admin   55 Nov  3 15:36 tmp
+[admin@mei-eilab-srv ~]$ cd main\ app/
+[admin@mei-eilab-srv main app]$ ls
+bin              jquery.canvasjs.min.js  notes         routes
+canvasjs.min.js  models                  package.json  server.js
+controllers      node_modules            public
+[admin@mei-eilab-srv main app]$ tmux
+[exited]
+[admin@mei-eilab-srv main app]$ tmux --help
+usage: tmux [-28lquvV] [-c shell-command] [-f file] [-L socket-name]
+            [-S socket-path] [command [flags]]
+[admin@mei-eilab-srv main app]$ man tmux
+[admin@mei-eilab-srv main app]$ tmux attach -s local
+tmux: unknown option -- s
+usage: attach-session [-dr] [-t target-session]
+[admin@mei-eilab-srv main app]$ tmux new -s local
+[detached]
+[admin@mei-eilab-srv main app]$ tmux --list-sessions
+usage: tmux [-28lquvV] [-c shell-command] [-f file] [-L socket-name]
+            [-S socket-path] [command [flags]]
+[admin@mei-eilab-srv main app]$ tmux --list-session
+usage: tmux [-28lquvV] [-c shell-command] [-f file] [-L socket-name]
+            [-S socket-path] [command [flags]]
+[admin@mei-eilab-srv main app]$ man tmux
+[admin@mei-eilab-srv main app]$ tmux list-sessions
+local: 1 windows (created Sat Nov  5 14:32:47 2016) [97x50]
+nodejs: 1 windows (created Thu Aug 25 15:55:06 2016) [97x50]
+[admin@mei-eilab-srv main app]$ tmux attach -t local
+[exited]
+[admin@mei-eilab-srv main app]$ tmux attach -t nodejs
+[detached]
+[admin@mei-eilab-srv main app]$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.1 191404  6556 ?        Ss   Aug25   5:30 /usr/lib/systemd/systemd --syste
+root         2  0.0  0.0      0     0 ?        S    Aug25   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S    Aug25   0:00 [ksoftirqd/0]
+root         7  0.0  0.0      0     0 ?        S    Aug25   0:01 [migration/0]
+root         8  0.0  0.0      0     0 ?        S    Aug25   0:00 [rcu_bh]
+root         9  0.0  0.0      0     0 ?        S    Aug25   0:00 [rcuob/0]
+root        10  0.0  0.0      0     0 ?        S    Aug25   0:00 [rcuob/1]
+root        11  0.0  0.0      0     0 ?        S    Aug25   0:00 [rcuob/2]
+root        12  0.0  0.0      0     0 ?        S    Aug25   0:00 [rcuob/3]
+root        13  0.0  0.0      0     0 ?        S    Aug25   2:16 [rcu_sched]
+root        14  0.0  0.0      0     0 ?        S    Aug25   0:16 [rcuos/0]
+root        15  0.0  0.0      0     0 ?        S    Aug25   0:46 [rcuos/1]
+root        16  0.0  0.0      0     0 ?        S    Aug25   0:27 [rcuos/2]
+root        17  0.0  0.0      0     0 ?        S    Aug25   0:30 [rcuos/3]
+root        18  0.0  0.0      0     0 ?        S    Aug25   0:30 [watchdog/0]
+root        19  0.0  0.0      0     0 ?        S    Aug25   0:28 [watchdog/1]
+root        20  0.0  0.0      0     0 ?        S    Aug25   0:03 [migration/1]
+root        21  0.0  0.0      0     0 ?        S    Aug25   0:02 [ksoftirqd/1]
+root        23  0.0  0.0      0     0 ?        S<   Aug25   0:00 [kworker/1:0H]
+root        24  0.0  0.0      0     0 ?        S    Aug25   0:19 [watchdog/2]
+root        25  0.0  0.0      0     0 ?        S    Aug25   0:01 [migration/2]
+root        26  0.0  0.0      0     0 ?        S    Aug25   0:06 [ksoftirqd/2]
+root        29  0.0  0.0      0     0 ?        S    Aug25   0:18 [watchdog/3]
+root        30  0.0  0.0      0     0 ?        S    Aug25   0:03 [migration/3]
+root        31  0.0  0.0      0     0 ?        S    Aug25   0:00 [ksoftirqd/3]
+root        33  0.0  0.0      0     0 ?        S<   Aug25   0:00 [kworker/3:0H]
+root        34  0.0  0.0      0     0 ?        S<   Aug25   0:00 [khelper]
+root        35  0.0  0.0      0     0 ?        S    Aug25   0:00 [kdevtmpfs]
+root        36  0.0  0.0      0     0 ?        S<   Aug25   0:00 [netns]
+root        37  0.0  0.0      0     0 ?        S<   Aug25   0:00 [perf]
+root        38  0.0  0.0      0     0 ?        S<   Aug25   0:00 [writeback]
+root        39  0.0  0.0      0     0 ?        S<   Aug25   0:00 [kintegrityd]
+root        40  0.0  0.0      0     0 ?        S<   Aug25   0:00 [bioset]
+root        41  0.0  0.0      0     0 ?        S<   Aug25   0:00 [kblockd]
+root        42  0.0  0.0      0     0 ?        S<   Aug25   0:00 [md]
+root        50  0.0  0.0      0     0 ?        S    Aug25   0:01 [khungtaskd]
+root        51  0.0  0.0      0     0 ?        S    Aug25   0:00 [kswapd0]
+root        52  0.0  0.0      0     0 ?        SN   Aug25   0:00 [ksmd]
+root        53  0.0  0.0      0     0 ?        SN   Aug25   0:12 [khugepaged]
+root        54  0.0  0.0      0     0 ?        S    Aug25   0:00 [fsnotify_mark]
+root        55  0.0  0.0      0     0 ?        S<   Aug25   0:00 [crypto]
+root        63  0.0  0.0      0     0 ?        S<   Aug25   0:00 [kthrotld]
+root        66  0.0  0.0      0     0 ?        S<   Aug25   0:00 [kmpath_rdacd]
+root        67  0.0  0.0      0     0 ?        S<   Aug25   0:00 [kpsmoused]
+root        69  0.0  0.0      0     0 ?        S<   Aug25   0:00 [ipv6_addrconf]
+root        88  0.0  0.0      0     0 ?        S<   Aug25   0:00 [deferwq]
+root       120  0.0  0.0      0     0 ?        S    Aug25   0:05 [kauditd]
+root       297  0.0  0.0      0     0 ?        S<   Aug25   0:00 [ata_sff]
+root       298  0.0  0.0      0     0 ?        S<   Aug25   0:00 [events_power_ef]
+root       307  0.0  0.0      0     0 ?        S    Aug25   0:00 [scsi_eh_0]
+root       308  0.0  0.0      0     0 ?        S<   Aug25   0:00 [scsi_tmf_0]
+root       309  0.0  0.0      0     0 ?        S    Aug25   0:00 [scsi_eh_1]
+root       310  0.0  0.0      0     0 ?        S<   Aug25   0:00 [scsi_tmf_1]
+root       311  0.0  0.0      0     0 ?        S    Aug25   0:00 [scsi_eh_2]
+root       312  0.0  0.0      0     0 ?        S<   Aug25   0:00 [scsi_tmf_2]
+root       313  0.0  0.0      0     0 ?        S    Aug25   0:00 [scsi_eh_3]
+root       314  0.0  0.0      0     0 ?        S<   Aug25   0:00 [scsi_tmf_3]
+root       315  0.0  0.0      0     0 ?        S    Aug25   0:00 [scsi_eh_4]
+root       316  0.0  0.0      0     0 ?        S<   Aug25   0:00 [scsi_tmf_4]
+root       317  0.0  0.0      0     0 ?        S    Aug25   0:00 [scsi_eh_5]
+root       318  0.0  0.0      0     0 ?        S<   Aug25   0:00 [scsi_tmf_5]
+root       331  0.0  0.0      0     0 ?        S    Aug25   0:00 [scsi_eh_6]
+root       332  0.0  0.0      0     0 ?        S<   Aug25   0:00 [scsi_tmf_6]
+root       333  0.0  0.0      0     0 ?        S    Aug25   0:00 [scsi_eh_7]
+root       334  0.0  0.0      0     0 ?        S<   Aug25   0:00 [scsi_tmf_7]
+root       350  0.0  0.0      0     0 ?        S<   Aug25   0:01 [kworker/0:1H]
+root       351  0.0  0.0      0     0 ?        S<   Aug25   0:00 [kworker/1:1H]
+root       353  0.0  0.0      0     0 ?        S<   Aug25   0:16 [kworker/3:1H]
+root       354  0.0  0.0      0     0 ?        S<   Aug25   0:06 [kworker/2:1H]
+root       414  0.0  0.0      0     0 ?        S<   Aug25   0:00 [kdmflush]
+root       415  0.0  0.0      0     0 ?        S<   Aug25   0:00 [bioset]
+root       424  0.0  0.0      0     0 ?        S<   Aug25   0:00 [kdmflush]
+root       425  0.0  0.0      0     0 ?        S<   Aug25   0:00 [bioset]
+root       440  0.0  0.0      0     0 ?        S<   Aug25   0:00 [xfsalloc]
+root       441  0.0  0.0      0     0 ?        S<   Aug25   0:00 [xfs_mru_cache]
+root       442  0.0  0.0      0     0 ?        S<   Aug25   0:00 [xfs-buf/dm-0]
+root       443  0.0  0.0      0     0 ?        S<   Aug25   0:00 [xfs-data/dm-0]
+root       444  0.0  0.0      0     0 ?        S<   Aug25   0:00 [xfs-conv/dm-0]
+root       445  0.0  0.0      0     0 ?        S<   Aug25   0:00 [xfs-cil/dm-0]
+root       446  0.0  0.0      0     0 ?        S    Aug25   8:13 [xfsaild/dm-0]
+root       517  0.0  0.4  45008 13508 ?        Ss   Aug25   1:04 /usr/lib/systemd/systemd-journal
+root       533  0.0  0.0      0     0 ?        S<   Aug25   0:00 [rpciod]
+root       583  0.0  0.0      0     0 ?        S    Aug25   0:00 [irq/31-mei_me]
+root       616  0.0  0.0      0     0 ?        S<   Aug25   0:00 [kvm-irqfd-clean]
+root       622  0.0  0.0      0     0 ?        S<   Aug25   0:00 [xfs-buf/sda1]
+root       623  0.0  0.0      0     0 ?        S<   Aug25   0:00 [xfs-data/sda1]
+root       624  0.0  0.0      0     0 ?        S<   Aug25   0:00 [xfs-conv/sda1]
+root       625  0.0  0.0      0     0 ?        S<   Aug25   0:00 [xfs-cil/sda1]
+root       626  0.0  0.0      0     0 ?        S    Aug25   0:00 [xfsaild/sda1]
+root       636  0.0  0.0      0     0 ?        S<   Aug25   0:00 [kdmflush]
+root       637  0.0  0.0      0     0 ?        S<   Aug25   0:00 [bioset]
+root       644  0.0  0.0      0     0 ?        S<   Aug25   0:00 [xfs-buf/dm-2]
+root       645  0.0  0.0      0     0 ?        S<   Aug25   0:00 [xfs-data/dm-2]
+root       646  0.0  0.0      0     0 ?        S<   Aug25   0:00 [xfs-conv/dm-2]
+root       647  0.0  0.0      0     0 ?        S<   Aug25   0:00 [xfs-cil/dm-2]
+root       648  0.0  0.0      0     0 ?        S    Aug25   0:00 [xfsaild/dm-2]
+root       667  0.0  0.0 116744  1748 ?        S<sl Aug25   0:26 /sbin/auditd -n
+root       699  0.0  0.6 323584 23248 ?        Ssl  Aug25   0:22 /usr/bin/python -Es /usr/sbin/fi
+dbus       700  0.0  0.0 102820  2276 ?        Ssl  Aug25   3:04 /bin/dbus-daemon --system --addr
+root       703  0.0  0.0  26516  2340 ?        Ss   Aug25   0:01 /usr/sbin/smartd -n -q never
+root       704  0.0  0.0  26872  2244 ?        Ss   Aug25   1:26 /usr/lib/systemd/systemd-logind
+libstor+   706  0.0  0.0   8528   812 ?        Ss   Aug25   0:08 /usr/bin/lsmd -d
+root       712  0.0  0.1 210288  5312 ?        Ss   Aug25   0:00 /usr/sbin/abrtd -d -s
+root       715  0.0  0.0  19176  1168 ?        Ss   Aug25   5:30 /usr/sbin/irqbalance --foregroun
+root       716  0.0  0.1 207968  4520 ?        Ss   Aug25   0:03 /usr/bin/abrt-watch-log -F BUG:
+root       720  0.0  0.4 393912 16112 ?        Ssl  Aug25   0:23 /usr/sbin/rsyslogd -n
+root       818  0.0  0.2 436600  7760 ?        Ssl  Aug25   1:21 /usr/sbin/NetworkManager --no-da
+root       955  0.0  0.0  53060  2688 ?        Ss   Aug25   0:00 /usr/sbin/wpa_supplicant -u -f /
+root      1058  0.0  0.0      0     0 ?        S<   Nov03   0:00 [kworker/0:0H]
+root      1272  0.0  0.0      0     0 ?        S    Nov03   0:01 [kworker/u8:1]
+root      1342  0.0  0.1  82552  3592 ?        Ss   Aug25   0:00 /usr/sbin/sshd -D
+root      1361  0.0  0.0  25960   972 ?        Ss   Aug25   0:00 /usr/sbin/atd -f
+root      1449  0.0  0.0 126364  1732 ?        Ss   Nov03   0:01 /usr/sbin/crond -n
+root      1471  0.0  0.0 110032   856 tty1     Ss+  Aug25   0:00 /sbin/agetty --noclear tty1 linu
+root      1532  0.0  0.1  45632  4276 ?        Ss   Nov03   0:00 /usr/lib/systemd/systemd-udevd
+root      2391  0.0  0.0      0     0 ?        S    12:25   0:00 [kworker/0:2]
+root      2521  0.0  0.0  93216  2216 ?        Ss   Aug25   0:16 /usr/libexec/postfix/master -w
+postfix   2523  0.0  0.1  93496  4144 ?        S    Aug25   0:02 qmgr -l -t unix -u
+mongod    2526  0.2  3.4 1452816 116292 ?      Sl   Aug25 227:35 /usr/bin/mongod -f /etc/mongod.c
+admin     4194  0.0  0.0  23288  2688 ?        Ss   Aug25   8:16 tmux new -s nodejs
+admin     4195  0.0  0.0 116268  3092 pts/3    Ss   Aug25   0:00 -bash
+admin     4230  0.0  0.0 116164  2812 pts/4    Ss+  Aug25   0:00 -bash
+root      4456  0.0  0.0      0     0 ?        S    13:25   0:00 [kworker/3:0]
+postfix   5066  0.0  0.1  93328  3924 ?        S    13:43   0:00 pickup -l -t unix -u
+root      6145  0.0  0.1 147196  5496 ?        Ss   14:23   0:00 sshd: admin [priv]
+admin     6149  0.0  0.0 147196  2480 ?        S    14:23   0:00 sshd: admin@pts/1
+admin     6150  0.0  0.0 116172  3048 pts/1    Ss   14:23   0:00 -bash
+root      6191  0.0  0.0      0     0 ?        S    14:23   0:00 [kworker/2:2]
+root      6447  0.0  0.0      0     0 ?        S<   Nov03   0:00 [kworker/2:0H]
+root      6561  0.0  0.0      0     0 ?        S    14:25   0:00 [kworker/1:0]
+root      6576  0.0  0.0      0     0 ?        S    14:28   0:00 [kworker/3:2]
+root      7118  0.0  0.0      0     0 ?        S    14:29   0:00 [kworker/2:1]
+root      7125  0.0  0.0      0     0 ?        S    14:30   0:00 [kworker/0:0]
+root      7150  0.0  0.1 259008  6356 ?        Sl   14:31   0:00 /usr/sbin/abrt-dbus -t133
+root      7334  0.0  0.1 215476  3584 pts/3    S+   14:35   0:00 sudo node server.js
+root      7335  5.2  1.0 1076904 35332 pts/3   Sl+  14:35   0:00 node server.js
+admin     7346  0.0  0.0 151032  1824 pts/1    R+   14:35   0:00 ps aux
+root      8305  0.0  0.1 147196  5492 ?        Ss   Nov03   0:00 sshd: admin [priv]
+admin     8309  0.0  0.0 147196  2464 ?        S    Nov03   0:04 sshd: admin@pts/0
+admin     8310  0.0  0.0 116172  3044 pts/0    Ss+  Nov03   0:00 -bash
+root      8863  0.0  0.0      0     0 ?        S    Nov04   0:03 [kworker/1:2]
+root     18880  0.0  0.0      0     0 ?        S    Nov03   0:00 [kworker/u8:2]
+root     22374  0.0  0.1 129132  5716 ?        Ss   Nov03   0:00 /usr/sbin/lvmetad -f
+rpc      22509  0.0  0.0  64908  1116 ?        Ss   Nov03   0:00 /sbin/rpcbind -w
+ntp      22543  0.0  0.0  33652  2188 ?        Ss   Nov03   0:00 /usr/sbin/ntpd -u ntp:ntp -g
+root     22567  0.0  0.4 553076 16380 ?        Ssl  Nov03   0:07 /usr/bin/python -Es /usr/sbin/tu
+polkitd  22677  0.0  0.3 529540 10912 ?        Ssl  Nov03   0:01 /usr/lib/polkit-1/polkitd --no-d
+root     22756  0.0  0.0 203368  1228 ?        Ssl  Nov03   0:00 /usr/sbin/gssproxy -D
+[admin@mei-eilab-srv main app]$ disown --help
+-bash: disown: --: invalid option
+disown: usage: disown [-h] [-ar] [jobspec ...]
+[admin@mei-eilab-srv main app]$ man disown
+[admin@mei-eilab-srv main app]$ fg
+-bash: fg: current: no such job
+[admin@mei-eilab-srv main app]$ mc
+
+[admin@mei-eilab-srv main app]$
+[1]+  Stopped                 /usr/bin/mc -P "$MC_PWD_FILE" "$@"
+[admin@mei-eilab-srv main app]$ jobs
+[1]+  Stopped                 /usr/bin/mc -P "$MC_PWD_FILE" "$@"
+[admin@mei-eilab-srv main app]$ mc
+
+[admin@mei-eilab-srv main app]$ jobs
+[admin@mei-eilab-srv main app]$
+[admin@mei-eilab-srv main app]$ nano test
+[admin@mei-eilab-srv main app]$ jobs
+[1]+  Stopped                 /usr/bin/mc -P "$MC_PWD_FILE" "$@"
+[admin@mei-eilab-srv main app]$ fg
+/usr/bin/mc -P "$MC_PWD_FILE" "$@"
+
+[1]+  Stopped                 /usr/bin/mc -P "$MC_PWD_FILE" "$@"
+[admin@mei-eilab-srv main app]$ mc
+
+[2]+  Stopped                 /usr/bin/mc -P "$MC_PWD_FILE" "$@"
+[admin@mei-eilab-srv main app]$ fg
+/usr/bin/mc -P "$MC_PWD_FILE" "$@"
+
+[admin@mei-eilab-srv main app]$ fg
+/usr/bin/mc -P "$MC_PWD_FILE" "$@"
+
+[admin@mei-eilab-srv main app]$ mc
+
+[admin@mei-eilab-srv main app]$

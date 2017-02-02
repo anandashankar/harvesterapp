@@ -1,0 +1,18 @@
+ctrlb c - new window
+ctrlb n - next window
+ctrlb p - previous window
+ctrlb , - rename window
+ctrlb w - list open windows
+ctrlb % - split vertical pane
+ctrlb : split-window - split window horizontally
+ctrlb d - detach from session
+tmux new -s "name" - named session
+ps aux | grep htop - check htop process running at the back in a detached session
+tmux list sessions - list sessions
+tmux attach -t "backupshell"- reattch to the session named backupshell
+
+
+
+
+
+
