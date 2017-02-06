@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({
 app.use(morgan('dev'));
 
 // Use environment defined port or 3000
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 80;
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json()); 
@@ -41,7 +41,7 @@ var router = express.Router();
 // Initial dummy route for testing
 // http://localhost:3000/api
 router.get('/', function(req, res) {
-	var obj = 'http://localhost:8080/api/harvesters/';
+	var obj = 'http://localhost:80/api/harvesters/';
   res.json([{message: 'List of Harvesters', data: obj}]);
 });
 
@@ -56,12 +56,12 @@ harvestersRoute.post(function(req, res) {
   // Set the beer properties that came from the POST data
   harvester.id = req.body.id;
   harvester.step_ms = req.body.step_ms;
-  harvester.oillevel = 'http://localhost:8080/api/harvesters/oillevel';
-  harvester.fuellevel = 'http://localhost:8080/api/harvesters/fuellevel';
-  harvester.pressure = 'http://localhost:8080/api/harvesters/pressure';
-  harvester.location = 'http://localhost:8080/api/harvesters/location';
-  harvester.motortemp = 'http://localhost:8080/api/harvesters/motortemp';
-  harvester.oiltemp = 'http://localhost:8080/api/harvesters/oiltemp';
+  harvester.oillevel = 'http://localhost:80/api/harvesters/oillevel';
+  harvester.fuellevel = 'http://localhost:80/api/harvesters/fuellevel';
+  harvester.pressure = 'http://localhost:80/api/harvesters/pressure';
+  harvester.location = 'http://localhost:80/api/harvesters/location';
+  harvester.motortemp = 'http://localhost:80/api/harvesters/motortemp';
+  harvester.oiltemp = 'http://localhost:80/api/harvesters/oiltemp';
 
 
   // Save the harvester and check for errors

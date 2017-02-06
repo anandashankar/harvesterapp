@@ -15,7 +15,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$timeout', function($scope, $ht
   refresh();
   $http({
     method : "GET",
-    url : "http://localhost:8080/api/harvesters/pressure"
+    url : "http://localhost:80/api/harvesters/pressure"
   }).then(function mySucces(response) {
     $scope.myPressure = response.data;
   }, function myError(response) {
@@ -25,7 +25,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$timeout', function($scope, $ht
 
   $http({
     method : "GET",
-    url : "http://localhost:8080/api/harvesters/fuellevel"
+    url : "http://localhost:80/api/harvesters/fuellevel"
   }).then(function mySucces(response) {
     $scope.myFuel = response.data;
   }, function myError(response) {
@@ -36,7 +36,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$timeout', function($scope, $ht
 
   $http({
     method : "GET",
-    url : "http://localhost:8080/api/harvesters/oillevel"
+    url : "http://localhost:80/api/harvesters/oillevel"
   }).then(function mySucces(response) {
     $scope.myOil = response.data;
   }, function myError(response) {
@@ -46,7 +46,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$timeout', function($scope, $ht
 
   $http({
     method : "GET",
-    url : "http://localhost:8080/api/harvesters/location"
+    url : "http://localhost:80/api/harvesters/location"
   }).then(function mySucces(response) {
     $scope.myLoc = response.data;
 }, function myError(response) {
@@ -55,7 +55,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$timeout', function($scope, $ht
 
     $http({
     method : "GET",
-    url : "http://localhost:8080/api/harvesters/motortemp"
+    url : "http://localhost:80/api/harvesters/motortemp"
   }).then(function mySucces(response) {
     $scope.myMotor = response.data;
 }, function myError(response) {
@@ -64,7 +64,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', '$timeout', function($scope, $ht
 
     $http({
     method : "GET",
-    url : "http://localhost:8080/api/harvesters/oiltemp"
+    url : "http://localhost:80/api/harvesters/oiltemp"
   }).then(function mySucces(response) {
     $scope.myOilTemp = response.data;
 }, function myError(response) {

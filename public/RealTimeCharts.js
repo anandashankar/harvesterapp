@@ -1,6 +1,7 @@
+  
   function myFunc1(){
   var dataPoints = [];
-  $.getJSON("http://localhost:8080/api/harvesters/pressure", function(data){ 
+  $.getJSON("http://localhost:80/api/harvesters/pressure", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){ 
       dataPoints.push({x: key, y: value.pressure[0]});
@@ -20,7 +21,7 @@
     });
     chart.render();
   });
-  
+
 }
 
 
@@ -28,7 +29,7 @@
 
   function myFunc2(){
   var dataPoints = [];
-  $.getJSON("http://localhost:8080/api/harvesters/fuellevel", function(data){ 
+  $.getJSON("http://localhost:80/api/harvesters/fuellevel", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.fuellevel});
@@ -53,7 +54,7 @@
 
   function myFunc3(){
   var dataPoints = [];
-  $.getJSON("http://localhost:8080/api/harvesters/oillevel", function(data){ 
+  $.getJSON("http://localhost:80/api/harvesters/oillevel", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.oillevel});
@@ -77,7 +78,7 @@
 
 function myFunc4(){
   var dataPoints = [];
-  $.getJSON("http://localhost:8080/api/harvesters/motortemp", function(data){ 
+  $.getJSON("http://localhost:80/api/harvesters/motortemp", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.motortemp});
@@ -89,7 +90,7 @@ function myFunc4(){
         text:"Motor Temperature"
       },
       data: [{
-        type: "spline",
+        type: "area",
         color: "rgba(255, 128, 0, 0.8)",
         dataPoints : dataPoints
       }]
@@ -101,7 +102,7 @@ function myFunc4(){
 
 function myFunc5(){
   var dataPoints = [];
-  $.getJSON("http://localhost:8080/api/harvesters/oiltemp", function(data){ 
+  $.getJSON("http://localhost:80/api/harvesters/oiltemp", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.oiltemp});
@@ -113,7 +114,7 @@ function myFunc5(){
         text:"Oil Temperature"
       },
       data: [{
-        type: "spline",
+        type: "area",
         color: "rgba(255, 255, 0, 0.8)",
         dataPoints : dataPoints
       }]
@@ -132,3 +133,5 @@ function start(){
   myFunc5();
 }
 window.onload=start;
+
+
