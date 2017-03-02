@@ -1,10 +1,10 @@
-var mySystemApp = angular.module('mySystemApp', ['ngSanitize']);
-mySystemApp.controller('SystemAppCtrl', ['$scope', '$http', '$timeout', function($scope, $http) {
-  console.log("Hello World from system controller");
+var app = angular.module('autoRefreshApp', []);
+app.controller('autoRefreshController', ['$scope', '$http', '$timeout', function($scope, $http, $interval) {
+  console.log("Hello World from controller");
 
   var refresh = function(){
     $http.get('/api/harvesters').success(function(response){
-      console.log("I again got the data I requested");
+      console.log("I got the data I requested");
       $scope.harvesters = response;
       $scope.mdata = "";
 
@@ -13,6 +13,7 @@ mySystemApp.controller('SystemAppCtrl', ['$scope', '$http', '$timeout', function
   };
 
   refresh();
+
   $http({
     method : "GET",
     url : "http://localhost:8080/api/harvesters/pressure"
@@ -25,6 +26,17 @@ mySystemApp.controller('SystemAppCtrl', ['$scope', '$http', '$timeout', function
 
   $http({
     method : "GET",
+    url : "http://localhost:8080/api/harvesters/fuellevel"
+  }).then(function mySucces(response) {
+    $scope.myFuel = response.data;
+  }, function myError(response) {
+    $scope.myFuel = response.data.records;
+  });
+
+ 
+
+  $http({
+    method : "GET",
     url : "http://localhost:8080/api/harvesters/oillevel"
   }).then(function mySucces(response) {
     $scope.myOil = response.data;
@@ -32,6 +44,15 @@ mySystemApp.controller('SystemAppCtrl', ['$scope', '$http', '$timeout', function
     $scope.myOil = response.data.records;
   });
 
+
+  $http({
+    method : "GET",
+    url : "http://localhost:8080/api/harvesters/location"
+  }).then(function mySucces(response) {
+    $scope.myLoc = response.data;
+}, function myError(response) {
+    $scope.myLoc = response.data.records; 
+  });
 
     $http({
     method : "GET",
@@ -51,5 +72,54 @@ mySystemApp.controller('SystemAppCtrl', ['$scope', '$http', '$timeout', function
     $scope.myOilTemp = response.data.records; 
   });
 
+  $http({
+    method : "GET",
+    url : "http://localhost:8080/api/harvesters/boom/boomlift"
+  }).then(function mySucces(response) {
+    $scope.myBoomLift = response.data;
+    //console.log(response.data);
+}, function myError(response) {
+    $scope.myBoomLift = response.data.records; 
+  });
+
+  $http({
+    method : "GET",
+    url : "http://localhost:8080/api/harvesters/boom/boomfold"
+  }).then(function mySucces(response) {
+    $scope.myBoomFold = response.data;
+    //console.log(response.data);
+}, function myError(response) {
+    $scope.myBoomFold = response.data.records; 
+  });
+
+$http({
+    method : "GET",
+    url : "http://localhost:8080/api/harvesters/boom/boomrotate"
+  }).then(function mySucces(response) {
+    $scope.myBoomRotate = response.data;
+    //console.log(response.data);
+}, function myError(response) {
+    $scope.myBoomRotate = response.data.records; 
+  });
+
+
+
 }]); 
 
+
+
+    
+
+      
+      
+      
+
+     
+      
+        
+      
+      
+
+     
+      
+   
