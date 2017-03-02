@@ -13,8 +13,8 @@ var HarvesterSchema = new mongoose.Schema({
 	pressure: String,
 	location: String,
 	motortemp: String,
-	oiltemp: String
-
+	oiltemp: String,
+	boom: String
 });
 
 HarvesterSchema.plugin(timestamps);

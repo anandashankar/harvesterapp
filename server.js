@@ -11,7 +11,12 @@ var Fuellevel = require('./models/fuellevel');
 var Location = require('./models/location');
 var Motortemp = require('./models/motortemp');
 var Oiltemp = require('./models/oiltemp');
+var Boom = require('./models/boom');
+var Boomlift = require('./models/boomlift');
+var Boomfold = require('./models/boomfold');
+var Boomrotate = require('./models/boomrotate');
 var cookieParser = require('cookie-parser');
+var path = require('path');
 
 //to avoid mongoose promise error
 mongoose.Promise = global.Promise;
@@ -30,10 +35,18 @@ app.use(bodyParser.urlencoded({
 app.use(morgan('dev'));
 
 // Use environment defined port or 3000
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 8080;
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json()); 
+
+app.get('/system', function(req, res) {
+  res.sendfile(path.join(__dirname + '/public/system.html'));
+});
+
+app.get('/map', function(req, res) {
+  res.sendfile(path.join(__dirname + '/public/map.html'));
+});
 
 // Create our Express router
 var router = express.Router();
@@ -41,9 +54,10 @@ var router = express.Router();
 // Initial dummy route for testing
 // http://localhost:3000/api
 router.get('/', function(req, res) {
-	var obj = 'http://localhost:80/api/harvesters/';
+	var obj = 'http://localhost:8080/api/harvesters/';
   res.json([{message: 'List of Harvesters', data: obj}]);
 });
+
 
 // Create a new route with the prefix /harvester
 var harvestersRoute = router.route('/harvesters');
@@ -56,13 +70,14 @@ harvestersRoute.post(function(req, res) {
   // Set the beer properties that came from the POST data
   harvester.id = req.body.id;
   harvester.step_ms = req.body.step_ms;
-  harvester.oillevel = 'http://localhost:80/api/harvesters/oillevel';
-  harvester.fuellevel = 'http://localhost:80/api/harvesters/fuellevel';
-  harvester.pressure = 'http://localhost:80/api/harvesters/pressure';
-  harvester.location = 'http://localhost:80/api/harvesters/location';
-  harvester.motortemp = 'http://localhost:80/api/harvesters/motortemp';
-  harvester.oiltemp = 'http://localhost:80/api/harvesters/oiltemp';
-
+  harvester.oillevel = 'http://localhost:8080/api/harvesters/oillevel';
+  harvester.fuellevel = 'http://localhost:8080/api/harvesters/fuellevel';
+  harvester.pressure = 'http://localhost:8080/api/harvesters/pressure';
+  harvester.location = 'http://localhost:8080/api/harvesters/location';
+  harvester.motortemp = 'http://localhost:8080/api/harvesters/motortemp';
+  harvester.oiltemp = 'http://localhost:8080/api/harvesters/oiltemp';
+  harvester.boom = 'http://localhost:8080/api/harvesters/boom';
+  
 
   // Save the harvester and check for errors
   harvester.save(function(err) {
@@ -208,6 +223,105 @@ oiltempHarvestersRoute.get(function(req, res){
   });
 });
 
+/*Boom Schema*/
+var boomHarvestersRoute = router.route('/harvesters/boom');
+boomHarvestersRoute.post(function(req, res){
+  var boom = new Boom();
+  boom.boomlift = 'http://localhost:8080/api/harvesters/boom/boomlift';
+  boom.boomfold ='http://localhost:8080/api/harvesters/boom/boomfold';
+  boom.boomrotate = 'http://localhost:8080/api/harvesters/boom/boomrotate';
+
+  boom.save(function(err){
+    if (err)
+      res.send(err);
+    res.json({ message: 'Boom data', data: boom });
+  });
+});
+
+//creating new route using endpoint /harvesters/boom for GET
+boomHarvestersRoute.get(function(req, res){
+  Boom.find(function(err, boom){
+    if(err)
+      res.send(err);
+    res.json(boom);
+  });
+});
+
+
+/*Boom Lift*/
+var boomliftHarvestersRoute = router.route('/harvesters/boom/boomlift');
+boomliftHarvestersRoute.post(function(req, res){
+  var boomlift = new Boomlift();
+  boomlift.boomlup = req.body.boomlup;
+  boomlift.boomlcc = req.body.boomlcc;
+
+  boomlift.save(function(err){
+    if (err)
+      res.send(err);
+    res.json({ message: 'Boom Lift Data', data: boomlift });
+  });
+});
+
+//creating new route using endpoint /harvesters/boom/boomlift for GET
+boomliftHarvestersRoute.get(function(req, res){
+  Boomlift.find(function(err, boomlift){
+    if(err)
+      res.send(err);
+    res.json(boomlift);
+  });
+});
+
+
+/*Boom Fold*/
+
+var boomfoldHarvestersRoute = router.route('/harvesters/boom/boomfold');
+boomfoldHarvestersRoute.post(function(req, res){
+  var boomfold = new Boomfold();
+  boomfold.boomfup = req.body.boomfup;
+  boomfold.boomfcc = req.body.boomfcc;
+
+  boomfold.save(function(err){
+    if (err)
+      res.send(err);
+    res.json({ message: 'Boom Fold Data', data: boomfold });
+  });
+});
+
+//creating new route using endpoint /harvesters/boom/boomfold for GET
+boomfoldHarvestersRoute.get(function(req, res){
+  Boomfold.find(function(err, boomfold){
+    if(err)
+      res.send(err);
+    res.json(boomfold);
+  });
+});
+
+
+/*Boom Rotate*/
+
+var boomrotateHarvestersRoute = router.route('/harvesters/boom/boomrotate');
+boomrotateHarvestersRoute.post(function(req, res){
+  var boomrotate = new Boomrotate();
+  boomrotate.boomtlp = req.body.boomtlp;
+  boomrotate.boomtrp = req.body.boomtrp;
+  boomrotate.boomrcc = req.body.boomrcc;
+
+  boomrotate.save(function(err){
+    if (err)
+      res.send(err);
+    res.json({ message: 'Boom Rotate Data', data: boomrotate });
+  });
+});
+
+//creating new route using endpoint /harvesters/boom/boomrotate for GET
+boomrotateHarvestersRoute.get(function(req, res){
+  Boomrotate.find(function(err, boomrotate){
+    if(err)
+      res.send(err);
+    res.json(boomrotate);
+  });
+});
+
 
 // Create endpoint /api/harvesters for GET
 harvestersRoute.get(function(req, res) {
@@ -245,6 +359,7 @@ harvesterRoute.delete(function(req, res) {
     res.json({ message: 'Harvester data removed' });
   });
 });
+
 
 // Register all our routes with /api
 app.use('/api', router);

@@ -15,8 +15,11 @@
 
   <!-- Dial view for parameters, Google data visualization -->
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>-->
+
+  <!-- templating -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
   <!-- Google gauge charts-->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -69,8 +72,55 @@
     h3{
       color:    #000000;
     }
-    .highcharts-yaxis-grid .highcharts-grid-line {
+  .highcharts-yaxis-grid .highcharts-grid-line {
   display: none;
+}
+  .chart {
+    float: left;
+}   
+  .chart2 {
+    float: left;   
+}
+  .chart3 {
+    float: left;    
+}
+  .chart4 {
+    float: left;    
+}
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+  .button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+
+  .button1:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+  .button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+}
+
+  .button2:hover {
+    background-color: #008CBA;
+    color: white;
 }
   </style>
 
@@ -83,45 +133,41 @@
 
 <body>
   <div class="container" ng-controller="AppCtrl">
-    <h1>Harvester Dashboard</h1>
-    <br>
+    <h2>Harvester Dashboard</h2>
 
     <!-- Here is the code for entering Date in the format of w3c-->
-    <h3>Current Time: </h3>
+    <h4>Current Time: </h4>
     <p id="demo"></p>
     <script>
       document.getElementById("demo").innerHTML = Date();
     </script>
+    <a href="/map" class="button button1">Map</a>
+    <a href="/system" class="button button2">System</a>
     <hr>
-    <!-- Maps for locating Harvester and Heat Map for location tracking-->
-
-    <!-- Locate your Harvester-->
-    <h3>Location Tracker: </h3>
-    <div id="map" style="width:70%;height:350px"></div>
-    <br>
-
-    <!--Performence Management -->
-    <h3>Performance Management: </h3>
-    <div>  
-      <div id='chart_div' style="width: 800px; height: 240px;"></div>
-    </div>
-    <br>
-
+                                                                                                                                                                                                       
     <!--Real Time Charts -->
     <div>
-      <h3>Realtime Data: </h3>
-      <div id="chartContainer" style="height: 300px; width: 75%;"></div>
+      <h4>Realtime Data: </h4>
+
+      <div class="chart" id="chartContainer" style="height: 200px; width: 50%;"></div>
       <br>
-      <div id="chartContainer1" style="height: 300px; width: 75%;"></div>
+      <div class="chart" id="chartContainer1" style="height: 200px; width: 50%;"></div>
       <br>
-      <div id="chartContainer2" style="height: 300px; width: 75%;"></div>
+      <div class="chart2" id="chartContainer2" style="height: 200px; width: 50%;"></div>
       <br>
-      <div id="chartContainer3" style="height: 300px; width: 75%;"></div>
+      <div class="chart2" id="chartContainer3" style="height: 200px; width: 50%;"></div>
       <br>
-      <div id="chartContainer4" style="height: 300px; width: 75%;"></div>
-    </div>
+      <div class="chart3" id="chartContainer4" style="height: 200px; width: 50%;"></div>
+      <br>
+      <div class="chart3" id="chartContainer5" style="height: 200px; width: 50%;"></div>
+      <br>
+      <div class="chart4" id="chartContainer6" style="height: 200px; width: 50%;"></div>
+      <br>
+      <div class="chart4" id="chartContainer7" style="height: 200px; width: 50%;"></div>
+
     <br>
-    <!-- Data Table-->
+
+    <!-- Data Table
     <div id="outer">
       <h3>Data Table: </h3>
 
@@ -193,14 +239,12 @@
     <hr>
     <br>
   
-
+-->
   <meta id ="chartContainer" http-equiv="refresh" content="40" />
   </div> 
   
   <script src="controllers/controller.js"></script>
-  <script src="maps.js"></script>
-  <script src="gaugeFuelIndicator.js"></script>
   <script src="RealTimeCharts.js"></script>
-</script>
+
 </body>
 </html>

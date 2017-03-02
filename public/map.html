@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <title>Harvester Location</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" type="text/css" href="new.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+  integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+  integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"> 
+
+  <!-- Dial view for parameters, Google data visualization -->
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>
+
+  <!-- Google gauge charts-->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+ 
+
+  <!-- Google Map sync to track location of Harvester -->
+  <meta name="viewport" content="initial-scale=1.0">
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+  <!--High Charts -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0%;
+    }
+
+    .map {
+      height: 25%;
+    }
+    
+  </style>
+
+    <!-- Google Maps API -->
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANiD_A1WFgFK2ZeALR8EoV6HB5uvx4sNI"></script> -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANiD_A1WFgFK2ZeALR8EoV6HB5uvx4sNI&libraries=visualization">
+</script>
+</head>
+
+
+<body>
+  <div class="container" ng-controller="AppCtrl">
+    <h1>Harvester Location</h1>
+    <br>
+
+    <!-- Here is the code for entering Date in the format of w3c-->
+    <h3>Current Time: </h3>
+    <p id="demo"></p>
+    <script>
+      document.getElementById("demo").innerHTML = Date();
+    </script>
+    <hr>
+    <!-- Maps for locating Harvester and Heat Map for location tracking-->
+
+    <!-- Locate your Harvester-->
+    <h3>Location Tracker: </h3>
+    <div id="map" style="width:100%;height:600px"></div>
+    <br>
+
+  <script src="maps.js"></script>
+
+</script>
+</body>
+</html>
