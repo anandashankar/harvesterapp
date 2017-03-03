@@ -22,9 +22,9 @@ $.ajax({
 
 
 function initialize() { 
-    var myLatLng = new google.maps.LatLng(61.4498, 23.8586);
+    var myLatLng = new google.maps.LatLng(61.44783, 23.860631);
     var mapOptions = {
-               zoom: 13,
+               zoom: 16,
                center: myLatLng,
                mapTypeId: google.maps.MapTypeId.ROADMAP
             }; 
