@@ -5,6 +5,14 @@
 
   <link rel="stylesheet" type="text/css" href="newer.css">
 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="new.css">
+
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
   integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -13,42 +21,79 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
   integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"> 
 
-
   <!-- templating -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
-  <!-- Google gauge charts-->
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
- 
-
-  <!-- Google Map sync to track location of Harvester -->
-  <meta name="viewport" content="initial-scale=1.0">
-  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-
-  <!--<script src="http://code.angularjs.org/1.4.0-rc.2/angular.js"></script>-->
-  <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-
+  <script type="text/javascript" src="canvasjs.min.js"></script>
+  
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 210%;
+      margin-top: 1%;
+      margin-left: 1%;
+    }
+        
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+  </style>
 </head>
 <body>
+<nav class="navbar navbar-inverse visible-xs">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Harvester</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Dashboard</a></li>
+        <li class="active"><a href="#">System</a></li>
+        <li><a href="#">Locate</a></li>
+        <li><a href="#">Analytics</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid" ng-controller="autoRefreshController">
+  <div class="row content">
+    <div class="col-sm-2 sidenav hidden-xs">
+      <h2>Harvester Dashboard</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="/">Data</a></li>
+        <li class="active"><a href="/system">System</a></li>
+        <li><a href="/map">Locate</a></li>
+        <li><a href="/analytics">Analytics</a></li>
+      </ul><br>
+    </div>
+    <br>
+    
+    <div class="col-sm-9">
+      <div class="well">
+        <h4>Current Time: </h4>
+        <p id="demo"></p>
+          <script>
+            document.getElementById("demo").innerHTML = Date();
+          </script>
+      </div>
+    </div>
 
-  <div class="container" ng-controller="autoRefreshController" >
-    <h2>Harvester System</h2>
-
-    <!-- Here is the code for entering Date in the format of w3c-->
-    <h4>Current Time: </h4>
-    <p id="demo"></p>
-    <script>
-      document.getElementById("demo").innerHTML = Date();
-    </script>
-   <a href="/" class="button button3">Main</a>
-    <a href="/map" class="button button1">Map</a>   
-    <hr>
+  <div class="col-sm-9">
 
     <!-- Pneumatic diagram of harvester valve, pump and cylinder-->
-<h4>Hydrulic System Data: </h4>
+  <h4>Hydrulic System Data: </h4>
   <div class="relative">
   <div class="b2u">
     <img src="valve.svg" width="200" height="100">
@@ -83,7 +128,6 @@
     <h5>Pump, 18 KW @3600rpm</h5>
   </div>
 </div>
-
 
 <div class="relative1">
         <table>  
@@ -139,6 +183,9 @@
           </tr>
           </div>
         </table>
+  </div>
+</div>
+</div>
 </div>
 <meta id ="alldata" http-equiv="refresh" content="60" />
 </div>

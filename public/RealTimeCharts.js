@@ -11,6 +11,7 @@
     });
     
     var chart = new CanvasJS.Chart("chartContainer",{
+      backgroundColor: "#f1f1f1", 
       title:{
         text:"Oil Pressure"
       },
@@ -58,6 +59,7 @@
     });
     
     var chart = new CanvasJS.Chart("chartContainer1",{
+      backgroundColor: "#f1f1f1",
       title:{
         text:"Fuel Level"
       },
@@ -106,6 +108,7 @@
     
     console.log("great!") ;
     var chart = new CanvasJS.Chart("chartContainer2",{
+      backgroundColor: "#f1f1f1",
       title:{
         text:"Oil Level"
       },
@@ -152,6 +155,7 @@ function myFunc4(){
     
     console.log("great!") ;
     var chart = new CanvasJS.Chart("chartContainer3",{
+      backgroundColor: "#f1f1f1",
       title:{
         text:"Motor Temperature"
       },
@@ -198,6 +202,7 @@ function myFunc5(){
     
     console.log("great!") ;
     var chart = new CanvasJS.Chart("chartContainer4",{
+      backgroundColor: "#f1f1f1",
       title:{
         text:"Oil Temperature"
       },
@@ -248,6 +253,7 @@ function myFunc6(){
     
     console.log("boomlift");
     var chart = new CanvasJS.Chart("chartContainer5",{
+      backgroundColor: "#f1f1f1",
       title:{
         text:"Boom Lift Control Current (mA) vs. Boom Lift up pressure (bar)"
       },
@@ -305,6 +311,7 @@ function myFunc7(){
     
     console.log("boomfold");
     var chart = new CanvasJS.Chart("chartContainer6",{
+      backgroundColor: "#f1f1f1",
       title:{
         text:"Boom Fold Control Current (mA) vs. Boom Fold up pressure (bar)"
       },
@@ -367,6 +374,7 @@ function myFunc8(){
     
     console.log("boomrotate");
     var chart = new CanvasJS.Chart("chartContainer7",{
+      backgroundColor: "#f1f1f1",
       title:{
         text:"Boom Rotate Control Current (mA) vs. Boom Turn pressure (bar)"
       },

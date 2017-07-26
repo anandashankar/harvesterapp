@@ -24,6 +24,9 @@ myApp.config(function($routeProvider) {
     })
     .when("/system", {
         templateUrl : "system.htm"
+    })
+    .when("/analytics", {
+        templateUrl : "analytics.htm"
     });
 });  
 }]); 

@@ -1,4 +1,4 @@
-// Load required packages
+  // Load required packages
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
@@ -46,6 +46,10 @@ app.get('/system', function(req, res) {
 
 app.get('/map', function(req, res) {
   res.sendfile(path.join(__dirname + '/public/map.html'));
+});
+
+app.get('/analytics', function(req, res) {
+  res.sendfile(path.join(__dirname + '/public/analytics.html'));
 });
 
 // Create our Express router
@@ -197,6 +201,30 @@ motortempHarvestersRoute.get(function(req, res){
     if(err)
       res.send(err);
     res.json(motortemp);
+  });
+});
+
+var motor = router.route('/harvesters/motortemp/:motortemp_id');
+
+// Create endpoint /api/beers/:beer_id for GET
+motor.get(function(req, res) {
+  // Use the Beer model to find a specific beer
+  Motortemp.findById(req.params.motortemp_id, function(err, motor) {
+    if (err)
+      res.send(err);
+
+    res.json(motor);
+  });
+});
+
+// Create endpoint /api/harvesters/:harvesters_id for DELETE
+motor.delete(function(req, res) {
+  // Use the Beer model to find a specific beer and remove it
+  Motortemp.findByIdAndRemove(req.params.motortemp_id, function(err) {
+    if (err)
+      res.send(err);
+
+    res.json({ message: 'Motor Temperature data removed' });
   });
 });
 

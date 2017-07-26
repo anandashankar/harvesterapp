@@ -1,8 +1,13 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html lang="en">
 <head>
-  <title>Harvester App</title>
-  <!-- Latest compiled and minified CSS -->
+  <title>Harvester Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <link rel="stylesheet" type="text/css" href="new.css">
 
   <!-- Latest compiled and minified CSS -->
@@ -13,231 +18,134 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
   integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"> 
 
-  <!-- Dial view for parameters, Google data visualization -->
- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
- <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>-->
-
   <!-- templating -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
-  <!-- Google gauge charts-->
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
- 
-
-  <!-- Google Map sync to track location of Harvester -->
-  <meta name="viewport" content="initial-scale=1.0">
-  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
- <!-- <script type="text/javascript" src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>-->
   <script type="text/javascript" src="canvasjs.min.js"></script>
-
+  
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0%;
-    }
-
-    .map {
-      height: 25%;
-    }
-    table, th , td  {
-      border: 1px solid grey;
-      border-collapse: collapse;
-      padding: 5px;
-    }
-    table tr:nth-child(odd) {
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
       background-color: #f1f1f1;
+      height: 210%;
+      margin-top: 1%;
+      margin-left: 1%;
     }
-    table tr:nth-child(even) {
-      background-color: #ffffff;
+        
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
     }
-    #outer{text-align:left;}
-    .one{
-      display: flex;
-      text-align:center;
-      text-decoration-style: wavy;
-      width: 75%;
-    }
-    .red{
-       background-color: red;
-    }
-    h3{
-      color:    #000000;
-    }
-  .highcharts-yaxis-grid .highcharts-grid-line {
-  display: none;
-}
-  .chart {
-    float: left;
-}   
-  .chart2 {
-    float: left;   
-}
-  .chart3 {
-    float: left;    
-}
-  .chart4 {
-    float: left;    
-}
-  .button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    cursor: pointer;
-}
-
-  .button1 {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #4CAF50;
-}
-
-  .button1:hover {
-    background-color: #4CAF50;
-    color: white;
-}
-  .button2 {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #008CBA;
-}
-
-  .button2:hover {
-    background-color: #008CBA;
-    color: white;
-}
   </style>
-
-    <!-- Google Maps API -->
-<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANiD_A1WFgFK2ZeALR8EoV6HB5uvx4sNI"></script> -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANiD_A1WFgFK2ZeALR8EoV6HB5uvx4sNI&libraries=visualization">
-</script>
 </head>
-
-
 <body>
-  <div class="container" ng-controller="AppCtrl">
-    <h2>Harvester Dashboard</h2>
-
-    <!-- Here is the code for entering Date in the format of w3c-->
-    <h4>Current Time: </h4>
-    <p id="demo"></p>
-    <script>
-      document.getElementById("demo").innerHTML = Date();
-    </script>
-    <a href="/map" class="button button1">Map</a>
-    <a href="/system" class="button button2">System</a>
-    <hr>
-                                                                                                                                                                                                       
-    <!--Real Time Charts -->
-    <div>
-      <h4>Realtime Data: </h4>
-
-      <div class="chart" id="chartContainer" style="height: 200px; width: 50%;"></div>
-      <br>
-      <div class="chart" id="chartContainer1" style="height: 200px; width: 50%;"></div>
-      <br>
-      <div class="chart2" id="chartContainer2" style="height: 200px; width: 50%;"></div>
-      <br>
-      <div class="chart2" id="chartContainer3" style="height: 200px; width: 50%;"></div>
-      <br>
-      <div class="chart3" id="chartContainer4" style="height: 200px; width: 50%;"></div>
-      <br>
-      <div class="chart3" id="chartContainer5" style="height: 200px; width: 50%;"></div>
-      <br>
-      <div class="chart4" id="chartContainer6" style="height: 200px; width: 50%;"></div>
-      <br>
-      <div class="chart4" id="chartContainer7" style="height: 200px; width: 50%;"></div>
-
-    <br>
-
-    <!-- Data Table
-    <div id="outer">
-      <h3>Data Table: </h3>
-
-      <div class="one">
-        <table>  
-          <h4>Oil Pressure: </h4>
-          <tr ng-repeat="x in myPressure | limitTo : -5">
-            <td>{{ $index + 1 }}</td>
-            <td>{{x.pressure}}</td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="one">
-        <table>
-          <h4>Fuel Level: </h4>
-          <tr id="fuel" ng-repeat="y in myFuel | limitTo : -5"">
-            <td>{{ $index + 1 }}</td>
-            <td id="fuelclm" ng-class="{'red': (y.fuellevel <= 20)}">{{y.fuellevel}}</td>           
-          </tr>
-        </table>
-
-        </div>
-
-      <div class="one">
-        <table>
-          <h4>Oil Level: </h4>
-          <tr ng-repeat="z in myOil | limitTo : -5">
-            <td>{{ $index + 1 }}</td>
-            <td ng-class="{'red': (z.oillevel <= 20)}">{{z.oillevel}}</td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="one">
-        <table>
-          <h4>Location: </h4>
-          <div ng-repeat="w in myLoc">
-          <tr ng-repeat="(key, value) in myLoc | limitTo : -5">
-            <td>{{ $index + 1 }}</td>
-            <td>{{value.latitude}}</td>
-            <td>{{value.longitude}}</td>
-          </tr>
-          </div>
-        </table>
-      </div>
-
-      <div class="one">
-        <table>
-          <h4>Motor Temperature: </h4>
-          <tr ng-repeat="m in myMotor | limitTo : -5">
-            <td>{{ $index + 1 }}</td>
-            <td ng-class="{'red': (m.motortemp >= 90)}">{{m.motortemp}}</td>
-          </tr>
-        </table>
-      </div>
-
-       <div class="one">
-        <table>
-          <h4>Oil Temperature: </h4>
-          <tr ng-repeat="m in myOilTemp | limitTo : -5">
-            <td>{{ $index + 1 }}</td>
-            <td ng-class="{'red': (m.oiltemp >= 90)}">{{m.oiltemp}}</td>
-          </tr>
-        </table>
-      </div>
-
+<nav class="navbar navbar-inverse visible-xs">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Harvester</a>
     </div>
-    <hr>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="#">System</a></li>
+        <li><a href="#">Locate</a></li>
+        <li><a href="#">Analytics</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid" ng-controller="AppCtrl">
+  <div class="row content">
+    <div class="col-sm-2 sidenav hidden-xs">
+      <h2>Harvester Dashboard</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="/">Data</a></li>
+        <li><a href="/system">System</a></li>
+        <li><a href="/map">Locate</a></li>
+        <li><a href="/analytics">Analytics</a></li>
+      </ul><br>
+    </div>
     <br>
-  
--->
-  <meta id ="chartContainer" http-equiv="refresh" content="60" />
-  </div> 
-  
+    
+    <div class="col-sm-9">
+      <div class="well">
+        <h4>Current Time: </h4>
+        <p id="demo"></p>
+          <script>
+            document.getElementById("demo").innerHTML = Date();
+          </script>
+      </div>
+      <!-- ***********************************************************************************************-->
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="well">
+          <div class="chart" id="chartContainer" style="height: 200px; width: 100%;"></div>
+          <meta id ="chartContainer" http-equiv="refresh" content="60" />
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="well">
+          <div class="chart" id="chartContainer1" style="height: 200px; width: 100%;"></div>
+          <meta id ="chartContainer1" http-equiv="refresh" content="60" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="well">
+             <div class="chart2" id="chartContainer2" style="height: 200px; width: 100%;"></div>
+             <meta id ="chartContainer2" http-equiv="refresh" content="60" />
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="well">
+            <div class="chart2" id="chartContainer3" style="height: 200px; width: 100%;"></div>
+            <meta id ="chartContainer3" http-equiv="refresh" content="60" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="well">
+           <div class="chart3" id="chartContainer4" style="height: 200px; width: 100%;"></div>
+           <meta id ="chartContainer4" http-equiv="refresh" content="60" />
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="well">
+          <div class="chart3" id="chartContainer5" style="height: 200px; width: 100%;"></div>
+          <meta id ="chartContainer5" http-equiv="refresh" content="60" />
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="well">
+             <div class="chart4" id="chartContainer6" style="height: 200px; width: 100%;"></div>
+             <meta id ="chartContainer6" http-equiv="refresh" content="60" />
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="well">
+            <div class="chart4" id="chartContainer7" style="height: 200px; width: 100%;"></div>
+            <meta id ="chartContainer7" http-equiv="refresh" content="60" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
   <script src="controllers/controller.js"></script>
   <script src="RealTimeCharts.js"></script>
 
