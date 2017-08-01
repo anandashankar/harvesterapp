@@ -53,7 +53,7 @@ var gaugeOptions = {
     }
 };
 
-// The fuel gauge
+// The fuel level indicator 
 var chartSpeed = Highcharts.chart('container-speed', Highcharts.merge(gaugeOptions, {
     yAxis: {
         min: 0,
@@ -82,34 +82,83 @@ var chartSpeed = Highcharts.chart('container-speed', Highcharts.merge(gaugeOptio
 
     }));
 
+//Oil level indicator 
+var chartOil = Highcharts.chart('container-oil', Highcharts.merge(gaugeOptions, {
+    yAxis: {
+        min: 0,
+        max: 100,
+        title: {
+            text: 'oillevel'
+        }
+    },
+
+    credits: {
+        enabled: false
+    },
+
+    series: [{
+        name: 'Oil Level',
+        data: [0],
+        dataLabels: {
+            format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+                   '<span style="font-size:12px;color:silver">%full</span></div>'
+        },
+        tooltip: {
+            valueSuffix: '%full'
+        }
+    }]
+
+    }));
+
+
   // Bring life to the dials
 setInterval(function () {
 
     var dataPoints = [];
+    var dataPoints1 = [];
+    var point, 
+        inc; 
+
     $.getJSON("http://localhost:8080/api/harvesters/fuellevel", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.fuellevel});
     });
-    
-    var point; 
-       
-    var inc = dataPoints[dataPoints.length - 1].y;
+             
+    inc = dataPoints[dataPoints.length - 1].y;
 
     if (chartSpeed) {
         point = chartSpeed.series[0].points[0];
+        console.log("chart works")
+        point.update(inc);
+    }
+
+});
+  
+    $.getJSON("http://localhost:8080/api/harvesters/oillevel", function(data1){ 
+    //console.log(data1);
+    $.each(data1, function(key, value){  
+      dataPoints1.push({x: key, y: value.oillevel});
+    });
+           
+    inc = dataPoints1[dataPoints1.length - 1].y;
+
+    if (chartOil) {
+        point = chartOil.series[0].points[0];
         //inc = Math.round((Math.random() - 0.5) * 100);
         //newVal = point.y + inc;
 
         /*if (newVal < 0 || newVal > 100) {
             newVal = point.y - inc;
         }*/
-        console.log("chart works")
+        console.log("Oil chart works aswell"); 
         point.update(inc);
     }
 
 });
 
 }, 5000);
+
 
 

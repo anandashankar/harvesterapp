@@ -19,7 +19,7 @@ myApp.controller('AppCtrl1', ['$scope', '$http', '$timeout', function($scope, $h
     url : "http://localhost:8080/api/harvesters/motortemp"
   }).then(function mySucces(response) {
     $scope.myMotor = response.data;
-    temp = [response.data[response.data.length - 1].motortemp];    
+    var temp = [response.data[response.data.length - 1].motortemp];   
 }, function myError(response) {
     $scope.myMotor = response.data.records; 
   });

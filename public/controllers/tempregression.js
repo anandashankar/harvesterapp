@@ -15,30 +15,6 @@ $.getJSON("http://localhost:8080/api/harvesters/motortemp", function(tempdata){
     			dataset.push(motorTemp[i].y); 
     			//console.log(dataset); 
     	}
-
-      /*var temp1 = motorTemp[motorTemp.length -1].y;
-      var temp2 = motorTemp[motorTemp.length -2].y;
-      var temp3 = motorTemp[motorTemp.length -3].y;
-      var temp4 = motorTemp[motorTemp.length -4].y;
-      var temp5 = motorTemp[motorTemp.length -5].y;
-      var temp6 = motorTemp[motorTemp.length -6].y;
-      var temp7 = motorTemp[motorTemp.length -7].y;
-      var temp8 = motorTemp[motorTemp.length -8].y;
-      var temp9 = motorTemp[motorTemp.length -9].y;
-      var temp10 = motorTemp[motorTemp.length -10].y;
-      var temp11 = motorTemp[motorTemp.length -11].y;
-      var temp12 = motorTemp[motorTemp.length -12].y;
-      var temp13 = motorTemp[motorTemp.length -13].y;
-      var temp14 = motorTemp[motorTemp.length -14].y;
-      var temp15 = motorTemp[motorTemp.length -15].y;
-      var temp16 = motorTemp[motorTemp.length -16].y;
-      var temp17 = motorTemp[motorTemp.length -17].y;
-      var temp18 = motorTemp[motorTemp.length -18].y;
-      var temp19 = motorTemp[motorTemp.length -19].y;*/
-
-      //console.log(temp2, temp3, temp, temp1);
-	 /*dataset = [temp19, temp18, temp17, temp16, temp15, temp14, temp13, temp12, temp11, temp10, temp9,
-	 temp8, temp7, temp6, temp5, temp4, temp3, temp2, temp1]; */
 	
 //debugger
 

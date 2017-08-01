@@ -45,25 +45,25 @@
 </head>
 <body>
 <nav class="navbar navbar-inverse visible-xs">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">Harvester</a>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">Harvester Dashboard</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="/">Data</a></li>
+          <li><a href="/system">System</a></li>
+          <li><a href="/map">Locate</a></li>
+          <li class="active"><a href="/analytics">Analytics</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Dashboard</a></li>
-        <li><a href="#">System</a></li>
-        <li><a href="#">Locate</a></li>
-        <li><a href="#">Analytics</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  </nav>
 <div class="container-fluid" ng-controller="AppCtrl">
   <div class="row content">
     <div class="col-sm-2 sidenav hidden-xs">

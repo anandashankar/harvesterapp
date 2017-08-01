@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="new.css">
+  <link rel="stylesheet" type="text/css" href="tempscatter.css">
 
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -22,9 +22,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-  <script type="text/javascript" src="canvasjs.min.js"></script>
-
   <!-- d3.js library for harvester health-->
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="https://unpkg.com/simple-statistics@4.1.0/dist/simple-statistics.min.js"></script>
@@ -34,193 +31,115 @@
   <script src="https://code.highcharts.com/highcharts-more.js"></script>
   <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
-  
-  <style>
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 550px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      background-color: #f1f1f1;
-      height: 240%;
-      margin-top: 1%;
-      margin-left: 1%;
-    }
-        
-    /* On small screens, set height to 'auto' for the grid */
-    @media screen and (max-width: 767px) {
-      .row.content {height: auto;} 
-    }   
-  </style>
-  <style type="text/css">
-        .chart-gauge
-      {
-        width: 300px;
-        margin: 2px auto  
-       } 
-      .chart-filled
-      {
-        fill: steelblue;
-      }
-      .chart-empty
-      {
-        fill: #dedede;
-      }
-    
-      .needle, .needle-center
-      {
-        fill: #464A4F;
-      }
-
-      svg {
-        font: 10px sans-serif;
-      }
-
-      .highcharts-yaxis-grid .highcharts-grid-line {
-      display: none;
-      }
-
-      .line {
-		stroke: blue;
-		fill:none;
-		stroke-width: 3;
-	}
-	
-	.axis path,
-	.axis line {
-		fill: none;
-		stroke: black;
-		shape-rendering: crispEdges;
-	}
-	
-	.axis text {
-		font-size: 10px;
-		font-family: sans-serif;
-	}
-	
-	.text-label {
-		font-size: 10px;
-		font-family: sans-serif;
-	}
-
-		.line {
-		  fill: none;
-		  stroke: steelblue;
-		  stroke-width: 1.5px;
-	}
-
-    </style>
 
 </head>
-<body>
-<nav class="navbar navbar-inverse visible-xs">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">Harvester</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">System</a></li>
-        <li><a href="#">Locate</a></li>
-        <li class="active"><a href="#">Analytics</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
 
-<div class="container-fluid" ng-controller="AppCtrl1">
-  <div class="row content">
-    <div class="col-sm-2 sidenav hidden-xs">
-      <h2>Harvester Dashboard</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="/">Data</a></li>
-        <li><a href="/system">System</a></li>
-        <li><a href="/map">Locate</a></li>
-        <li class="active"><a href="/analytics">Analytics</a></li>
-      </ul><br>
+<body>
+
+  <nav class="navbar navbar-inverse visible-xs">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">Harvester Dashboard</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="/">Data</a></li>
+          <li><a href="/system">System</a></li>
+          <li><a href="/map">Locate</a></li>
+          <li class="active"><a href="/analytics">Analytics</a></li>
+        </ul>
+      </div>
     </div>
-    <br>
-    
-  <div class="col-sm-9">
-      <div class="well">
-        <h4>Current Time: </h4>
-        <p id="demo"></p>
+  </nav>
+
+  <div class="container-fluid" ng-controller="AppCtrl1">
+    <div class="row content">
+      <div class="col-sm-2 sidenav hidden-xs">
+        <h2>Harvester Dashboard</h2>
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="/">Data</a></li>
+          <li><a href="/system">System</a></li>
+          <li><a href="/map">Locate</a></li>
+          <li class="active"><a href="/analytics">Analytics</a></li>
+        </ul><br>
+      </div>
+      <br>  
+
+      <div class="col-sm-9">
+        <div class="well">
+          <h4>Current Time: </h4>
+          <p id="demo"></p>
           <script>
             document.getElementById("demo").innerHTML = Date();
           </script>
-      </div>
+        </div>
 
-      <div class="row">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="well">
+              <h4>Current Fuel Level and Oil Level: </h4>
+              <br>
+              <div style="width: 800px; height: 210px; margin: 0 auto;">
+                <div id="container-speed" style="width: 400px; height: 200px; float: left; padding-right: 20px;"></div>
+                <div id="container-oil" style="width: 400px; height: 200px; float: left;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="well">
+              <h4>Oil Temp vs. Oil Pressure: </h4>
+              <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+              <meta id ="container" http-equiv="refresh" content="180" />
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="well">
+             <h4>Motor Temperature Trend: </h4>
+             <br>
+             <div class="chart-regress" width="100" height="100" ></div>
+           </div>
+         </div>       
+       </div>
+
+       <div class="row">         
         <div class="col-sm-6">
           <div class="well">
+           <h4>Oil Temp vs Motor Temp scatter: </h4>
+           <br>
+           <div class="chart-scatter" width="100" height="100"></div> 
+         </div>
+       </div>
+       <div class="col-sm-6">
+        <div class="well">
           <h4>Oil Pump Health: </h4>
-          <br>
-          <div class="chart-gauge" width="100" height="100"></div>
-          </div>
+          <div class="chart-gauge" width="100" height="80"></div>
         </div>
-        <div class="col-sm-6">
-          <div class="well">
-          <h4>Oil Temp vs. Oil Pressure: </h4>
-            <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-            <meta id ="container" http-equiv="refresh" content="60" />
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="well">
-            <h4>Current Fuel Level: </h4>
-            <br>
-            <div style="width: 420px; height: 420px; margin: 0 auto">
-              <div id="container-speed" style="width: 410px; height: 300px; float: left;"></div>
-             </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="well">
-           <h4>Motor Temperature Trend: </h4>
-           <div class="chart-regress" width="100" height="100"></div>
-          </div>
-        </div>       
-      </div>
-
-      <div class="row">         
-        <div class="col-sm-6">
-          <div class="well">
-             <h4>Alerts</h4>
-                  <div class="alert alert-warning alert-dismissable">
-                  <strong>Warning!</strong> Motor temperature is high.
-                </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="well">
-            <h4>Remaining Useful Life: </h4>
-          </div>
-        </div>  
-      </div>
-
-
+      </div>  
     </div>
-  </div>
-</div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>  
-  <script src="controllers/analyticsController.js"></script>
-  <script type="text/javascript" src="controllers/d3_gauge.js"></script>
-  <script type="text/javascript" src="controllers/solidgauge.js"></script>
-  <script type="text/javascript" src="controllers/scatterplot.js"></script>
-  <script type="text/javascript" src="controllers/tempregression.js"></script>
-  <script type="text/javascript">
-      setInterval(function(){
-        needle.moveTo(Math.random());
-      }, 240000);
-    </script>
+   </div>
+  </div>
+ </div>
+
+<script src="controllers/analyticsController.js"></script>
+<script type="text/javascript" src="controllers/solidgauge.js"></script>
+<script type="text/javascript" src="controllers/d3_gauge.js"></script>
+<script type="text/javascript" src="controllers/scatterplot.js"></script>
+<script type="text/javascript" src="controllers/tempregression.js"></script>
+<script type="text/javascript" src="controllers/tempscatter.js"></script>
+<script type="text/javascript">
+  setInterval(function(){
+    needle.moveTo(Math.random());
+  }, 240000);
+</script>
+
 </body>
 </html>

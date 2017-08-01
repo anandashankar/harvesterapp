@@ -1,0 +1,98 @@
+      /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 250%;
+      margin-top: 1%;
+      margin-left: 1%;
+    }
+
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }   
+    .chart-gauge
+    {
+      width: 300px;
+      margin: 2px auto  
+    } 
+    .chart-filled
+    {
+      fill: steelblue;
+    }
+    .chart-empty
+    {
+      fill: #dedede;
+    }
+
+    .needle, .needle-center
+    {
+      fill: #464A4F;
+    }
+
+    svg {
+      font: 10px sans-serif;
+    }
+
+    .highcharts-yaxis-grid .highcharts-grid-line {
+      display: none;
+    }
+
+    .line {
+      stroke: blue;
+      fill:none;
+      stroke-width: 3;
+    }
+
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: black;
+      shape-rendering: crispEdges;
+    }
+
+    .axis text {
+      font-size: 10px;
+      font-family: sans-serif;
+    }
+
+    .text-label {
+      font-size: 10px;
+      font-family: sans-serif;
+    }
+
+    .line {
+      fill: none;
+      stroke: steelblue;
+      stroke-width: 1.5px;
+    }
+
+.line {
+    stroke: #E4002B;
+    fill: none;
+    stroke-width: 3;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-size: 10px;
+    font-family: sans-serif;
+}
+
+.text-label {
+    font-size: 10px;
+    font-family: sans-serif;
+}
+
+.dot {
+    stroke: #293b47;
+    fill: #7A99AC
+}
