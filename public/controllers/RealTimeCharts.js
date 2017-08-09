@@ -1,14 +1,16 @@
-  
+ 
   function myFunc1(){
   var dataPoints = [];
+  var dataset = []; 
   $.getJSON("http://localhost:8080/api/harvesters/pressure", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){ 
       dataPoints.push({x: key, y: value.pressure[0]});
-      /*for(var i=0; i<value.pressure.length; i++){
-      dataPoints.push({x: key, y: value.pressure[i]});
-    }*/
     });
+
+    for (var i = (dataPoints.length - 20); i <= (dataPoints.length - 1); i++) {
+      dataset.push({x: i, y: dataPoints[i].y}) 
+    }
     
     var chart = new CanvasJS.Chart("chartContainer",{
       backgroundColor: "#f1f1f1", 
@@ -39,7 +41,7 @@
       data: [{
         type: "spline",
         name: "oil pressure",
-        dataPoints : dataPoints
+        dataPoints : dataset
       }]
     });
     chart.render();
@@ -48,16 +50,19 @@
 }
 
 
-
-
   function myFunc2(){
   var dataPoints = [];
-  $.getJSON("http://localhost:8080/api/harvesters/fuellevel", function(data){ 
+  var dataset = []; 
+  $.getJSON("http://localhost:8080/api/harvesters/fuellevel ", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.fuellevel});
     });
     
+    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
+      dataset.push({x: i, y: dataPoints[i].y})
+    }
+
     var chart = new CanvasJS.Chart("chartContainer1",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -88,7 +93,7 @@
         type: "spline",
         name: "fuellevel",
         color: "rgba(0, 255, 0, 1.0)",
-        dataPoints : dataPoints
+        dataPoints : dataset
       }]
     });
     chart.render();
@@ -96,17 +101,20 @@
   
 }
 
-
-
   function myFunc3(){
   var dataPoints = [];
+  var dataset = []; 
   $.getJSON("http://localhost:8080/api/harvesters/oillevel", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.oillevel});
     });
+
+    for (var i = (dataPoints.length - 2); i <= (dataPoints.length - 1); i++) {
+      dataset.push({x: i, y: dataPoints[i].y})
+    }
     
-    console.log("great!") ;
+    console.log("oillevel check!") ;
     var chart = new CanvasJS.Chart("chartContainer2",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -137,7 +145,7 @@
         type: "spline",
         name: "oillevel",
         color: "rgba(255, 0, 0, 0.8)",
-        dataPoints : dataPoints
+        dataPoints : dataset
       }]
     });
     chart.render();
@@ -147,13 +155,18 @@
 
 function myFunc4(){
   var dataPoints = [];
+  var dataset = []; 
   $.getJSON("http://localhost:8080/api/harvesters/motortemp", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.motortemp});
     });
+
+    for (var i = (dataPoints.length - 2); i <= (dataPoints.length - 1); i++) {
+      dataset.push({x: i, y: dataPoints[i].y})
+    }
     
-    console.log("great!") ;
+    console.log("motortemp check!") ;
     var chart = new CanvasJS.Chart("chartContainer3",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -183,8 +196,8 @@ function myFunc4(){
       data: [{
         type: "area",
         name: "motor temp",
-        color: "rgba(255, 128, 0, 0.8)",
-        dataPoints : dataPoints
+        color: "rgba(255, 153, 51, 0.8)",
+        dataPoints : dataset
       }]
     });
     chart.render();
@@ -194,13 +207,18 @@ function myFunc4(){
 
 function myFunc5(){
   var dataPoints = [];
+  var dataset = [];
   $.getJSON("http://localhost:8080/api/harvesters/oiltemp", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.oiltemp});
     });
+
+    for (var i = (dataPoints.length - 10); i <= (dataPoints.length - 1); i++) {
+      dataset.push({x: i, y: dataPoints[i].y}) 
+    }
     
-    console.log("great!") ;
+    console.log("oiltemp check!") ;
     var chart = new CanvasJS.Chart("chartContainer4",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -230,8 +248,8 @@ function myFunc5(){
       data: [{
         type: "area",
         name: "oil temp",
-        color: "rgba(255, 255, 0, 0.8)",
-        dataPoints : dataPoints
+        color: "rgba(255, 153, 0, 0.8)",
+        dataPoints : dataset
       }]
     });
     chart.render();
@@ -242,14 +260,25 @@ function myFunc5(){
 function myFunc6(){
   var dataPoints = [];
   var newdataPoints = [];
+  var dataset = []; 
+  var newdataset = []; 
   $.getJSON("http://localhost:8080/api/harvesters/boom/boomlift", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.boomlcc});
     });
+
+    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
+      dataset.push({x: i, y: dataPoints[i].y}) 
+    }
+
     $.each(data, function(key, value){  
       newdataPoints.push({x: key, y: value.boomlup});
     });
+
+    for (var j = (newdataPoints.length - 5); j <= (newdataPoints.length - 1); j++) {
+      newdataset.push({x: j, y: newdataPoints[j].y})
+    }
     
     console.log("boomlift");
     var chart = new CanvasJS.Chart("chartContainer5",{
@@ -283,13 +312,13 @@ function myFunc6(){
         type: "stepLine",
         name: "lcc",
         color: "rgba(255, 0, 0, 0.5)",
-        dataPoints : dataPoints
+        dataPoints : dataset
       },
       {
         type: "stepLine",
         name: "lup",
         color: "rgba(0, 0, 153, 0.5)",
-        dataPoints : newdataPoints
+        dataPoints : newdataset
       }]
     });
     chart.render();
@@ -300,15 +329,22 @@ function myFunc6(){
 function myFunc7(){
   var dataPoints = [];
   var newdataPoints = [];
+  var dataset = []; 
+  var newdataset = []; 
   $.getJSON("http://localhost:8080/api/harvesters/boom/boomfold", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.boomfcc});
     });
+    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
+      dataset.push({x: i, y: dataPoints[i].y}) 
+    }
     $.each(data, function(key, value){  
       newdataPoints.push({x: key, y: value.boomfup});
     });
-    
+    for (var j = (newdataPoints.length - 5); j <= (newdataPoints.length - 1); j++) {
+      newdataset.push({x: j, y: newdataPoints[j].y})
+    }
     console.log("boomfold");
     var chart = new CanvasJS.Chart("chartContainer6",{
       backgroundColor: "#f1f1f1",
@@ -341,13 +377,13 @@ function myFunc7(){
         type: "stepLine",
         name: "fcc",
         color: "rgba(255, 0, 0, 0.5)",
-        dataPoints : dataPoints
+        dataPoints : dataset
       },
       {
         type: "stepLine",
         name: "fup",
         color: "rgba(0, 0, 153, 0.5)",
-        dataPoints : newdataPoints
+        dataPoints : newdataset
       }]
     });
     chart.render();
@@ -359,19 +395,30 @@ function myFunc8(){
   var dataPoints = [];
   var newdataPoints = [];
   var verynewdataPoint = [];
+  var dataset = [];
+  var newdataset = [];
+  var verynewdataset = []; 
   $.getJSON("http://localhost:8080/api/harvesters/boom/boomrotate", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.boomtlp});
     });
+    for (var i = (dataPoints.length - 2); i <= (dataPoints.length - 1); i++) {
+      dataset.push({x: i, y: dataPoints[i].y}) 
+    }
     $.each(data, function(key, value){  
       newdataPoints.push({x: key, y: value.boomtrp});
     });
+    for (var j = (newdataPoints.length - 2); j <= (newdataPoints.length - 1); j++) {
+      newdataset.push({x: j, y: newdataPoints[j].y}) 
+    }
     $.each(data, function(key, value){  
       verynewdataPoint.push({x: key, y: value.boomrcc});
     });
+    for (var k = (verynewdataPoint.length - 2); k <= (verynewdataPoint.length - 1); k++) {
+      verynewdataset.push({x: k, y: verynewdataPoint[k].y}) 
+    }
 
-    
     console.log("boomrotate");
     var chart = new CanvasJS.Chart("chartContainer7",{
       backgroundColor: "#f1f1f1",
@@ -404,19 +451,19 @@ function myFunc8(){
         type: "stepLine",
         name: "tlp",
         color: "rgba(102, 102, 255, 0.5)",
-        dataPoints : dataPoints
+        dataPoints : dataset
       },
       {
         type: "stepLine",
         name: "trp",
         color: "rgba(0, 0, 153, 0.5)",
-        dataPoints : newdataPoints
+        dataPoints : newdataset
       },
       {
        type: "stepLine",
         name: "rcc",
         color: "rgba(255, 0, 0, 0.5)",
-        dataPoints : verynewdataPoint 
+        dataPoints : verynewdataset 
       }]
     });
     chart.render();
