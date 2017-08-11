@@ -1,4 +1,4 @@
-/* 
+
   function myFunc1(){
   var dataPoints = [];
   var dataset = []; 
@@ -100,7 +100,7 @@
   });
   
 }
-*/
+
   function myFunc3(){
   var dataPoints = [];
   var dataset = []; 
@@ -114,7 +114,7 @@
       dataset.push({x: i, y: dataPoints[i].y})
     }
     
-    console.log("oillevel check!") ;
+    //console.log("oillevel check!") ;
     var chart = new CanvasJS.Chart("chartContainer2",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -166,7 +166,7 @@ function myFunc4(){
       dataset.push({x: i, y: dataPoints[i].y})
     }
     
-    console.log("motortemp check!") ;
+    //console.log("motortemp check!") ;
     var chart = new CanvasJS.Chart("chartContainer3",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -218,7 +218,7 @@ function myFunc5(){
       dataset.push({x: i, y: dataPoints[i].y}) 
     }
     
-    console.log("oiltemp check!") ;
+    //console.log("oiltemp check!") ;
     var chart = new CanvasJS.Chart("chartContainer4",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -280,7 +280,7 @@ function myFunc6(){
       newdataset.push({x: j, y: newdataPoints[j].y})
     }
     
-    console.log("boomlift");
+    //console.log("boomlift");
     var chart = new CanvasJS.Chart("chartContainer5",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -345,7 +345,7 @@ function myFunc7(){
     for (var j = (newdataPoints.length - 5); j <= (newdataPoints.length - 1); j++) {
       newdataset.push({x: j, y: newdataPoints[j].y})
     }
-    console.log("boomfold");
+    //console.log("boomfold");
     var chart = new CanvasJS.Chart("chartContainer6",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -419,7 +419,7 @@ function myFunc8(){
       verynewdataset.push({x: k, y: verynewdataPoint[k].y}) 
     }
 
-    console.log("boomrotate");
+    //console.log("boomrotate");
     var chart = new CanvasJS.Chart("chartContainer7",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -471,10 +471,14 @@ function myFunc8(){
 
 }
 
+console.log("RTC Controller active"); 
+
+window.setInterval(start, 5000); 
+
 
 function start(){
-  //myFunc1();
-  //myFunc2();
+  myFunc1();
+  myFunc2();
   myFunc3();
   myFunc4();
   myFunc5();
