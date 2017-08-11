@@ -1,4 +1,4 @@
- 
+/* 
   function myFunc1(){
   var dataPoints = [];
   var dataset = []; 
@@ -100,7 +100,7 @@
   });
   
 }
-
+*/
   function myFunc3(){
   var dataPoints = [];
   var dataset = []; 
@@ -473,8 +473,8 @@ function myFunc8(){
 
 
 function start(){
-  myFunc1();
-  myFunc2();
+  //myFunc1();
+  //myFunc2();
   myFunc3();
   myFunc4();
   myFunc5();
