@@ -16,7 +16,7 @@ app.controller('autoRefreshController', ['$scope', '$http', '$timeout', function
 
   $http({
     method : "GET",
-    url : "http://localhost:8080/api/harvesters/pressure"
+    url : "http://46.101.113.34:8008/api/harvesters/pressure"
   }).then(function mySucces(response) {
     $scope.myPressure = response.data;
   }, function myError(response) {
@@ -26,7 +26,7 @@ app.controller('autoRefreshController', ['$scope', '$http', '$timeout', function
 
   $http({
     method : "GET",
-    url : "http://localhost:8080/api/harvesters/fuellevel"
+    url : "http://46.101.113.34:8008/api/harvesters/fuellevel"
   }).then(function mySucces(response) {
     $scope.myFuel = response.data;
   }, function myError(response) {
@@ -37,7 +37,7 @@ app.controller('autoRefreshController', ['$scope', '$http', '$timeout', function
 
   $http({
     method : "GET",
-    url : "http://localhost:8080/api/harvesters/oillevel"
+    url : "http://46.101.113.34:8008/api/harvesters/oillevel"
   }).then(function mySucces(response) {
     $scope.myOil = response.data;
   }, function myError(response) {
@@ -47,7 +47,7 @@ app.controller('autoRefreshController', ['$scope', '$http', '$timeout', function
 
   $http({
     method : "GET",
-    url : "http://localhost:8080/api/harvesters/location"
+    url : "http://46.101.113.34:8008/api/harvesters/location"
   }).then(function mySucces(response) {
     $scope.myLoc = response.data;
 }, function myError(response) {
@@ -56,7 +56,7 @@ app.controller('autoRefreshController', ['$scope', '$http', '$timeout', function
 
     $http({
     method : "GET",
-    url : "http://localhost:8080/api/harvesters/motortemp"
+    url : "http://46.101.113.34:8008/api/harvesters/motortemp"
   }).then(function mySucces(response) {
     $scope.myMotor = response.data;
 }, function myError(response) {
@@ -65,7 +65,7 @@ app.controller('autoRefreshController', ['$scope', '$http', '$timeout', function
 
     $http({
     method : "GET",
-    url : "http://localhost:8080/api/harvesters/oiltemp"
+    url : "http://46.101.113.34:8008/api/harvesters/oiltemp"
   }).then(function mySucces(response) {
     $scope.myOilTemp = response.data;
 }, function myError(response) {
@@ -74,7 +74,7 @@ app.controller('autoRefreshController', ['$scope', '$http', '$timeout', function
 
   $http({
     method : "GET",
-    url : "http://localhost:8080/api/harvesters/boom/boomlift"
+    url : "http://46.101.113.34:8008/api/harvesters/boom/boomlift"
   }).then(function mySucces(response) {
     $scope.myBoomLift = response.data;
     //console.log(response.data);
@@ -84,7 +84,7 @@ app.controller('autoRefreshController', ['$scope', '$http', '$timeout', function
 
   $http({
     method : "GET",
-    url : "http://localhost:8080/api/harvesters/boom/boomfold"
+    url : "http://46.101.113.34:8008/api/harvesters/boom/boomfold"
   }).then(function mySucces(response) {
     $scope.myBoomFold = response.data;
     //console.log(response.data);
@@ -94,7 +94,7 @@ app.controller('autoRefreshController', ['$scope', '$http', '$timeout', function
 
 $http({
     method : "GET",
-    url : "http://localhost:8080/api/harvesters/boom/boomrotate"
+    url : "http://localhost:8008/api/harvesters/boom/boomrotate"
   }).then(function mySucces(response) {
     $scope.myBoomRotate = response.data;
     //console.log(response.data);

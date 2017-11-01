@@ -2,7 +2,7 @@ var motorTemp = [];
 var dataset = []; 
 
 //Ajax call for data
-$.getJSON("http://localhost:8080/api/harvesters/motortemp", function(tempdata){ 
+$.getJSON("http://46.101.113.34:8008/api/harvesters/motortemp", function(tempdata){ 
     //console.log(data);
     $.each(tempdata, function(key, value){  
       motorTemp.push({x: key, y: value.motortemp});   	

@@ -2,7 +2,7 @@ var fuel = [];
 var dataset = []; 
 
 //Ajax call for data
-$.getJSON("http://localhost:8080/api/harvesters/fuellevel", function(data){ 
+$.getJSON("http://46.101.113.34:8008/api/harvesters/fuellevel", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       fuel.push({x: key, y: value.fuellevel});     

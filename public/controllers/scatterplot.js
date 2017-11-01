@@ -1,7 +1,7 @@
 var dataPressure = [];
 var dataTemp = [];
 
-$.getJSON("http://localhost:8080/api/harvesters/oiltemp", function(datam){ 
+$.getJSON("http://46.101.113.34:8008/api/harvesters/oiltemp", function(datam){ 
     //console.log(data);
     $.each(datam, function(key, value){  
       dataTemp.push({x: key, y: value.oiltemp});
@@ -59,7 +59,7 @@ $.getJSON("http://localhost:8080/api/harvesters/oiltemp", function(datam){
     var temp49 = dataTemp[dataTemp.length -50].y;
 
 
- $.getJSON("http://localhost:8080/api/harvesters/pressure", function(item){ 
+ $.getJSON("http://46.101.113.34:8008/api/harvesters/pressure", function(item){ 
     //console.log(data);
       $.each(item, function(key, value){ 
       dataPressure.push({x: key, y: value.pressure[0]});    

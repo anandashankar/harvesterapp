@@ -16,6 +16,8 @@ var Boomlift = require('./models/boomlift');
 var Boomfold = require('./models/boomfold');
 var Boomrotate = require('./models/boomrotate');
 var cookieParser = require('cookie-parser');
+
+var favicon = require('serve-favicon');
 var path = require('path');
 
 //to avoid mongoose promise error
@@ -27,6 +29,8 @@ mongoose.connect('mongodb://localhost:27017/harvesterapp');
 // Create our Express application
 var app = express();
 
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 // Use the body-parser package in our application
 app.use(bodyParser.urlencoded({
   extended: true
@@ -34,8 +38,8 @@ app.use(bodyParser.urlencoded({
 
 app.use(morgan('dev'));
 
-// Use environment defined port or 3000
-var port = process.env.PORT || 8080;
+// Use environment defined port or 8008 - temporary on digitalocean cloud server
+var port = process.env.PORT || 8008;
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json()); 
@@ -58,7 +62,7 @@ var router = express.Router();
 // Initial dummy route for testing
 // http://localhost:3000/api
 router.get('/', function(req, res) {
-	var obj = 'http://localhost:8080/api/harvesters/';
+	var obj = 'http://46.101.113.34:8008/api/harvesters/';
   res.json([{message: 'List of Harvesters', data: obj}]);
 });
 
@@ -74,13 +78,13 @@ harvestersRoute.post(function(req, res) {
   // Set the beer properties that came from the POST data
   harvester.id = req.body.id;
   harvester.step_ms = req.body.step_ms;
-  harvester.oillevel = 'http://localhost:8080/api/harvesters/oillevel';
-  harvester.fuellevel = 'http://localhost:8080/api/harvesters/fuellevel';
-  harvester.pressure = 'http://localhost:8080/api/harvesters/pressure';
-  harvester.location = 'http://localhost:8080/api/harvesters/location';
-  harvester.motortemp = 'http://localhost:8080/api/harvesters/motortemp';
-  harvester.oiltemp = 'http://localhost:8080/api/harvesters/oiltemp';
-  harvester.boom = 'http://localhost:8080/api/harvesters/boom';
+  harvester.oillevel = 'http://46.101.113.34:8008/api/harvesters/oillevel';
+  harvester.fuellevel = 'http://46.101.113.34:8008/api/harvesters/fuellevel';
+  harvester.pressure = 'http://46.101.113.34:8008/api/harvesters/pressure';
+  harvester.location = 'http://46.101.113.34:8008/api/harvesters/location';
+  harvester.motortemp = 'http://46.101.113.34:8008/api/harvesters/motortemp';
+  harvester.oiltemp = 'http://46.101.113.34:8008/api/harvesters/oiltemp';
+  harvester.boom = 'http://46.101.113.34:8008/api/harvesters/boom';
   
 
   // Save the harvester and check for errors
@@ -255,9 +259,9 @@ oiltempHarvestersRoute.get(function(req, res){
 var boomHarvestersRoute = router.route('/harvesters/boom');
 boomHarvestersRoute.post(function(req, res){
   var boom = new Boom();
-  boom.boomlift = 'http://localhost:8080/api/harvesters/boom/boomlift';
-  boom.boomfold ='http://localhost:8080/api/harvesters/boom/boomfold';
-  boom.boomrotate = 'http://localhost:8080/api/harvesters/boom/boomrotate';
+  boom.boomlift = 'http://46.101.113.34:8008/api/harvesters/boom/boomlift';
+  boom.boomfold ='http://46.101.113.34:8008/api/harvesters/boom/boomfold';
+  boom.boomrotate = 'http://46.101.113.34:8008/api/harvesters/boom/boomrotate';
 
   boom.save(function(err){
     if (err)

@@ -2,14 +2,14 @@
   function myFunc1(){
   var dataPoints = [];
   var dataset = []; 
-  $.getJSON("http://localhost:8080/api/harvesters/pressure", function(data){ 
+  $.getJSON("http://46.101.113.34:8008/api/harvesters/pressure", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){ 
       dataPoints.push({x: key, y: value.pressure[0]});
     });
 
-    for (var i = (dataPoints.length - 20); i <= (dataPoints.length - 1); i++) {
-      dataset.push({x: i, y: dataPoints[i].y}) 
+    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
+     dataset.push({x: i, y: dataPoints[i].y}) 
     }
     
     var chart = new CanvasJS.Chart("chartContainer",{
@@ -53,7 +53,7 @@
   function myFunc2(){
   var dataPoints = [];
   var dataset = []; 
-  $.getJSON("http://localhost:8080/api/harvesters/fuellevel ", function(data){ 
+  $.getJSON("http://46.101.113.34:8008/api/harvesters/fuellevel ", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.fuellevel});
@@ -104,17 +104,16 @@
   function myFunc3(){
   var dataPoints = [];
   var dataset = []; 
-  $.getJSON("http://localhost:8080/api/harvesters/oillevel", function(data){ 
+  $.getJSON("http://46.101.113.34:8008/api/harvesters/oillevel", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.oillevel});
     });
 
-    for (var i = (dataPoints.length - 2); i <= (dataPoints.length - 1); i++) {
+    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
       dataset.push({x: i, y: dataPoints[i].y})
     }
     
-    //console.log("oillevel check!") ;
     var chart = new CanvasJS.Chart("chartContainer2",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -156,17 +155,16 @@
 function myFunc4(){
   var dataPoints = [];
   var dataset = []; 
-  $.getJSON("http://localhost:8080/api/harvesters/motortemp", function(data){ 
+  $.getJSON("http://46.101.113.34:8008/api/harvesters/motortemp", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.motortemp});
     });
 
-    for (var i = (dataPoints.length - 2); i <= (dataPoints.length - 1); i++) {
+    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
       dataset.push({x: i, y: dataPoints[i].y})
     }
     
-    //console.log("motortemp check!") ;
     var chart = new CanvasJS.Chart("chartContainer3",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -208,17 +206,16 @@ function myFunc4(){
 function myFunc5(){
   var dataPoints = [];
   var dataset = [];
-  $.getJSON("http://localhost:8080/api/harvesters/oiltemp", function(data){ 
+  $.getJSON("http://46.101.113.34:8008/api/harvesters/oiltemp", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.oiltemp});
     });
 
-    for (var i = (dataPoints.length - 10); i <= (dataPoints.length - 1); i++) {
-      dataset.push({x: i, y: dataPoints[i].y}) 
+    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
+       dataset.push({x: i, y: dataPoints[i].y}) 
     }
     
-    //console.log("oiltemp check!") ;
     var chart = new CanvasJS.Chart("chartContainer4",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -262,14 +259,14 @@ function myFunc6(){
   var newdataPoints = [];
   var dataset = []; 
   var newdataset = []; 
-  $.getJSON("http://localhost:8080/api/harvesters/boom/boomlift", function(data){ 
+  $.getJSON("http://46.101.113.34:8008/api/harvesters/boom/boomlift", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.boomlcc});
     });
 
     for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
-      dataset.push({x: i, y: dataPoints[i].y}) 
+      dataset.push({x: i, y: dataPoints[i].y})
     }
 
     $.each(data, function(key, value){  
@@ -277,10 +274,9 @@ function myFunc6(){
     });
 
     for (var j = (newdataPoints.length - 5); j <= (newdataPoints.length - 1); j++) {
-      newdataset.push({x: j, y: newdataPoints[j].y})
+       newdataset.push({x: j, y: newdataPoints[j].y})
     }
     
-    //console.log("boomlift");
     var chart = new CanvasJS.Chart("chartContainer5",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -331,21 +327,23 @@ function myFunc7(){
   var newdataPoints = [];
   var dataset = []; 
   var newdataset = []; 
-  $.getJSON("http://localhost:8080/api/harvesters/boom/boomfold", function(data){ 
+  $.getJSON("http://46.101.113.34:8008/api/harvesters/boom/boomfold", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.boomfcc});
     });
     for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
-      dataset.push({x: i, y: dataPoints[i].y}) 
+      dataset.push({x: i, y: dataPoints[i].y})
     }
+
     $.each(data, function(key, value){  
       newdataPoints.push({x: key, y: value.boomfup});
     });
+
     for (var j = (newdataPoints.length - 5); j <= (newdataPoints.length - 1); j++) {
-      newdataset.push({x: j, y: newdataPoints[j].y})
+      newdataset.push({x: j, y: newdataPoints[j].y});
     }
-    //console.log("boomfold");
+
     var chart = new CanvasJS.Chart("chartContainer6",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -398,28 +396,31 @@ function myFunc8(){
   var dataset = [];
   var newdataset = [];
   var verynewdataset = []; 
-  $.getJSON("http://localhost:8080/api/harvesters/boom/boomrotate", function(data){ 
+  $.getJSON("http://46.101.113.34:8008/api/harvesters/boom/boomrotate", function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.boomtlp});
     });
-    for (var i = (dataPoints.length - 2); i <= (dataPoints.length - 1); i++) {
+    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
       dataset.push({x: i, y: dataPoints[i].y}) 
     }
+
     $.each(data, function(key, value){  
       newdataPoints.push({x: key, y: value.boomtrp});
     });
-    for (var j = (newdataPoints.length - 2); j <= (newdataPoints.length - 1); j++) {
+
+    for (var j = (newdataPoints.length - 5); j <= (newdataPoints.length - 1); j++) {
       newdataset.push({x: j, y: newdataPoints[j].y}) 
     }
+
     $.each(data, function(key, value){  
       verynewdataPoint.push({x: key, y: value.boomrcc});
     });
-    for (var k = (verynewdataPoint.length - 2); k <= (verynewdataPoint.length - 1); k++) {
+
+    for (var k = (verynewdataPoint.length - 5); k <= (verynewdataPoint.length - 1); k++) {
       verynewdataset.push({x: k, y: verynewdataPoint[k].y}) 
     }
 
-    //console.log("boomrotate");
     var chart = new CanvasJS.Chart("chartContainer7",{
       backgroundColor: "#f1f1f1",
       title:{
