@@ -111,7 +111,6 @@ var chartOil = Highcharts.chart('container-oil', Highcharts.merge(gaugeOptions, 
 
     }));
 
-
   // Bring life to the dials
 setInterval(function () {
 
@@ -121,7 +120,6 @@ setInterval(function () {
         inc; 
 
     $.getJSON("http://46.101.113.34:8008/api/harvesters/fuellevel", function(data){ 
-    //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.fuellevel});
     });
@@ -157,8 +155,7 @@ setInterval(function () {
     }
 
 });
-
-}, 5000);
+}, 10000);
 
 
 

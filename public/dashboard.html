@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myAnalyticsApp">
+<head>
+  <title>Harvester Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="tempscatter.css">
+  <link rel="stylesheet" type="text/css" href="new.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+  integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+  integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"> 
+
+  <!-- templating -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+  <!-- d3.js library for harvester health-->
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="https://unpkg.com/simple-statistics@4.1.0/dist/simple-statistics.min.js"></script>
+
+  <!-- Highcharts -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+  <meta name="viewport" content="initial-scale=1.0">
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANiD_A1WFgFK2ZeALR8EoV6HB5uvx4sNI&libraries=visualization">
+</script>
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse visible-xs">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">Harvester</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="/">Main</a></li>
+          <li class="active"><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/machinedata">Machine Data</a></li>
+          <li><a href="/raw">Raw data</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid" ng-controller="AppCtrl1">
+    <div class="row content">
+      <div class="col-sm-2 sidenav hidden-xs">
+        <h2>Harvester</h2>
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="/">Main</a></li>
+          <li class="active"><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/machinedata">Machine Data</a></li>
+          <li><a href="/raw">Raw data</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul><br>
+      </div>
+      <br>  
+
+      <div class="col-sm-9">
+        <div class="well">
+          <h4>Current Time: </h4>
+          <p id="demo"></p>
+          <script>
+            document.getElementById("demo").innerHTML = Date();
+          </script>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="well">
+              <h4>Current Fuel Level and Oil Level: </h4>
+              <br>
+              <div style="width: 800px; height: 200px; margin: 0 auto;">
+                <div id="container-speed" style="width: 400px; height: 200px; float: left; padding-right: 5%;"></div>
+                <div id="container-oil" style="width: 400px; height: 200px; float: left; padding-right: 5%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="well">
+              <h4>Map this machine</h4>
+               <div id="map" style="width:100%;height:300px"></div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="well">
+             <h4>Hydraulic Oil Pressure: </h4>
+             <br>
+             <!---->
+              <div style="width: 800px; height: 280px; padding-left: 15%;">
+             <div id="container-press" style="width: 400px; height: 200px; float: center;"></div>
+             </div>
+           </div>
+         </div>       
+       </div>
+
+       <div class="row">         
+        <div class="col-sm-6">
+          <div class="well">
+           <h4>Oil Temp vs. Oil Pressure: </h4>
+           <br>
+           <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+              <meta id ="container" http-equiv="refresh" content="180" />
+         </div>
+       </div>
+       <div class="col-sm-6">
+        <div class="well">
+          <h4>Motor Temperature Trend: </h4>
+          <div style="width: 800px; height: 400px; margin: 0 auto; float: center;">
+          <div class="chart-regress" width="100" height="100" style="padding: 5%;"></div>
+        </div>
+        </div>
+      </div>  
+    </div>
+
+   </div>
+  </div>
+ </div>
+
+<script src="maps.js"></script>
+<script src="controllers/analyticsController.js"></script>
+<script type="text/javascript" src="controllers/solidgauge.js"></script>
+<script type="text/javascript" src="controllers/pressuregauge.js"></script>
+<script type="text/javascript" src="controllers/scatterplot.js"></script>
+<script type="text/javascript" src="controllers/tempregression.js"></script>
+
+<script type="text/javascript">
+  setInterval(function(){
+    needle.moveTo(Math.random());
+  }, 240000);
+</script>
+
+</body>
+</html>

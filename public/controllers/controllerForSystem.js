@@ -94,7 +94,7 @@ app.controller('autoRefreshController', ['$scope', '$http', '$timeout', function
 
 $http({
     method : "GET",
-    url : "http://localhost:8008/api/harvesters/boom/boomrotate"
+    url : "http://46.101.113.34:8008/api/harvesters/boom/boomrotate"
   }).then(function mySucces(response) {
     $scope.myBoomRotate = response.data;
     //console.log(response.data);

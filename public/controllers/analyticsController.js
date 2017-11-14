@@ -14,15 +14,5 @@ myApp.controller('AppCtrl1', ['$scope', '$http', '$timeout', function($scope, $h
 
   refresh();
 
-  $http({
-    method : "GET",
-    url : "http://localhost:8008/api/harvesters/motortemp"
-  }).then(function mySucces(response) {
-    $scope.myMotor = response.data;
-    var temp = [response.data[response.data.length - 1].motortemp];   
-}, function myError(response) {
-    $scope.myMotor = response.data.records; 
-  });
-
 }]); 
 

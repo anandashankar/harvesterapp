@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myAnalyticsApp">
+<html lang="en">
 <head>
   <title>Harvester Analytics</title>
   <meta charset="utf-8">
@@ -23,15 +23,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
-  <!-- simple statistics-->
-  <script src="https://unpkg.com/simple-statistics@5.1.0/dist/simple-statistics.min.js"></script>
-  <!--chart.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
 </head>
 
 <body>
+
   <nav class="navbar navbar-inverse visible-xs">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -46,12 +41,7 @@
         <ul class="nav navbar-nav">
           <li><a href="/">Main</a></li>
           <li><a href="/dashboard">Dashboard</a></li>
-          <li class="active"><a href="/machinedata">Machine Data</a>
-            <ul>
-              <li><a href="/analytics">Engine</a></li>
-              <li><a href="/boom">Boom</a></li>
-            </ul>
-          </li>
+          <li class="active"><a href="/machinedata">Machine Data</a></li>
           <li><a href="/raw">Raw data</a></li>
           <li><a href="#">Logout</a></li>
         </ul>
@@ -59,19 +49,14 @@
     </div>
   </nav>
 
-  <div class="container-fluid" ng-controller="AppCtrl1">
+  <div class="container-fluid">
     <div class="row content">
       <div class="col-sm-2 sidenav hidden-xs">
         <h2>Harvester</h2>
         <ul class="nav nav-pills nav-stacked">
           <li><a href="/">Main</a></li>
           <li><a href="/dashboard">Dashboard</a></li>
-          <li class="active"><a href="/machinedata">Machine Data</a>
-            <ul>
-              <li><a href="/analytics">Engine</a></li>
-              <li><a href="/boom">Boom</a></li>
-            </ul>
-          </li>
+          <li class="active"><a href="/machinedata">Machine Data</a></li>
           <li><a href="/raw">Raw data</a></li>
           <li><a href="#">Logout</a></li>
         </ul><br>
@@ -88,64 +73,23 @@
         </div>
 
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-12">
             <div class="well">
-            <h4>Average Fuel consumption:</h4>
-            <br>
-            <canvas id="myChart"></canvas>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="well">
-            <h4>Last Refueled: </h4>
-            <br>
-            <table id="location" border='0.5'>
-                <tr>
-                    <th>Date: </th>
-                </tr>
-            </table>
-            <br>
-            <table id="location1" border='0.5'>
-                <tr>
-                <tr>
-                  <th>Time: </th>
-                </tr>
-            </table>
+               <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Machine Data
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li><a href="/analytics">Engine</a></li>
+                    <li><a href="/boom">Boom</a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="row">
-          <div class="col-sm-3">
-            <div class="well">
-            <h4>Avg Engine Load Factor: </h4>
-            <h5>Monthly summary (%)</h5>
-            <br>
-            <canvas id="mypieChart"></canvas>
-            </div>
-          </div>
-          <div class="col-sm-9">
-            <div class="well">
-            <h4>Engine Utilization: </h4>
-           </div>
-         </div>       
-       </div>
-
-       <div class="row">         
-        <div class="col-sm-12">
-          <div class="well">  
-          <h4>Maintenance Logs:</h4>    
-         </div>
-       </div>  
+      </div>
     </div>
-
-   </div>
   </div>
- </div>
-
-<script src="controllers/analyticsController.js"></script>
-<script type="text/javascript" src="controllers/avg.js"></script>
-<script type="text/javascript" src="controllers/load.js"></script>
 
 </body>
 </html>

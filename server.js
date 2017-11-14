@@ -17,8 +17,9 @@ var Boomfold = require('./models/boomfold');
 var Boomrotate = require('./models/boomrotate');
 var cookieParser = require('cookie-parser');
 
-var favicon = require('serve-favicon');
+var favicon = require('serve-favicon'); 
 var path = require('path');
+
 
 //to avoid mongoose promise error
 mongoose.Promise = global.Promise;
@@ -29,7 +30,7 @@ mongoose.connect('mongodb://localhost:27017/harvesterapp');
 // Create our Express application
 var app = express();
 
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico'))); 
 
 // Use the body-parser package in our application
 app.use(bodyParser.urlencoded({
@@ -38,24 +39,31 @@ app.use(bodyParser.urlencoded({
 
 app.use(morgan('dev'));
 
-// Use environment defined port or 8008 - temporary on digitalocean cloud server
+// Use environment defined port or 8008
 var port = process.env.PORT || 8008;
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json()); 
 
-app.get('/system', function(req, res) {
-  res.sendfile(path.join(__dirname + '/public/system.html'));
+app.get('/dashboard', function(req, res) {
+  res.sendfile(path.join(__dirname + '/public/dashboard.html'));
 });
 
-app.get('/map', function(req, res) {
-  res.sendfile(path.join(__dirname + '/public/map.html'));
+app.get('/raw', function(req, res) {
+  res.sendfile(path.join(__dirname + '/public/raw.html'));
 });
 
 app.get('/analytics', function(req, res) {
   res.sendfile(path.join(__dirname + '/public/analytics.html'));
 });
 
+app.get('/machinedata', function(req, res) {
+  res.sendfile(path.join(__dirname + '/public/machinedata.html'));
+});
+
+app.get('/boom', function(req, res) {
+  res.sendfile(path.join(__dirname + '/public/boom.html'));
+});
 // Create our Express router
 var router = express.Router();
 

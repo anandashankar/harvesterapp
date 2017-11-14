@@ -136,7 +136,7 @@ Highcharts.chart('container', {
     },
     yAxis: {
         title: {
-            text: 'Oil Pressure(psi)'
+            text: 'Oil Pressure(bar)'
         }
     },
     legend: {
@@ -166,7 +166,7 @@ Highcharts.chart('container', {
     }],
     tooltip: {
         headerFormat: '<b>{series.name}</b><br>',
-        pointFormat: '{point.x} ℃, {point.y} psi '
+        pointFormat: '{point.x} ℃, {point.y} bar '
     }
 });
 

@@ -19,14 +19,20 @@ myApp.config(function($routeProvider) {
     .when("/", {
         templateUrl : "index.htm"
     })
-    .when("/map", {
-        templateUrl : "map.htm"
+    .when("/machinedata", {
+        templateUrl : "machinedata.htm"
     })
-    .when("/system", {
-        templateUrl : "system.htm"
+    .when("/dashboard", {
+        templateUrl : "dashboard.htm"
     })
     .when("/analytics", {
         templateUrl : "analytics.htm"
+    });
+    .when("/boom", {
+        templateUrl : "boom.htm"
+    });
+    .when("/raw", {
+        templateUrl : "raw.htm"
     });
 });  
 }]); 

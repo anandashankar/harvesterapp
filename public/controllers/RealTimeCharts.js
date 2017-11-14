@@ -6,10 +6,10 @@
     //console.log(data);
     $.each(data, function(key, value){ 
       dataPoints.push({x: key, y: value.pressure[0]});
-    });
-
-    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
-     dataset.push({x: i, y: dataPoints[i].y}) 
+    }); 
+    
+    for (var i = (dataPoints.length - 30); i <= (dataPoints.length - 1); i++) {
+      dataset.push({x: i, y: dataPoints[i].y}) 
     }
     
     var chart = new CanvasJS.Chart("chartContainer",{
@@ -110,10 +110,11 @@
       dataPoints.push({x: key, y: value.oillevel});
     });
 
-    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
+    for (var i = (dataPoints.length - 2); i <= (dataPoints.length - 1); i++) {
       dataset.push({x: i, y: dataPoints[i].y})
     }
     
+    //console.log("oillevel check!") ;
     var chart = new CanvasJS.Chart("chartContainer2",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -161,10 +162,11 @@ function myFunc4(){
       dataPoints.push({x: key, y: value.motortemp});
     });
 
-    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
+    for (var i = (dataPoints.length - 2); i <= (dataPoints.length - 1); i++) {
       dataset.push({x: i, y: dataPoints[i].y})
     }
     
+    //console.log("motortemp check!") ;
     var chart = new CanvasJS.Chart("chartContainer3",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -212,10 +214,11 @@ function myFunc5(){
       dataPoints.push({x: key, y: value.oiltemp});
     });
 
-    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
-       dataset.push({x: i, y: dataPoints[i].y}) 
+    for (var i = (dataPoints.length - 10); i <= (dataPoints.length - 1); i++) {
+      dataset.push({x: i, y: dataPoints[i].y}) 
     }
     
+    //console.log("oiltemp check!") ;
     var chart = new CanvasJS.Chart("chartContainer4",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -266,7 +269,7 @@ function myFunc6(){
     });
 
     for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
-      dataset.push({x: i, y: dataPoints[i].y})
+      dataset.push({x: i, y: dataPoints[i].y}) 
     }
 
     $.each(data, function(key, value){  
@@ -274,9 +277,10 @@ function myFunc6(){
     });
 
     for (var j = (newdataPoints.length - 5); j <= (newdataPoints.length - 1); j++) {
-       newdataset.push({x: j, y: newdataPoints[j].y})
+      newdataset.push({x: j, y: newdataPoints[j].y})
     }
     
+    //console.log("boomlift");
     var chart = new CanvasJS.Chart("chartContainer5",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -333,17 +337,15 @@ function myFunc7(){
       dataPoints.push({x: key, y: value.boomfcc});
     });
     for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
-      dataset.push({x: i, y: dataPoints[i].y})
+      dataset.push({x: i, y: dataPoints[i].y}) 
     }
-
     $.each(data, function(key, value){  
       newdataPoints.push({x: key, y: value.boomfup});
     });
-
     for (var j = (newdataPoints.length - 5); j <= (newdataPoints.length - 1); j++) {
-      newdataset.push({x: j, y: newdataPoints[j].y});
+      newdataset.push({x: j, y: newdataPoints[j].y})
     }
-
+    //console.log("boomfold");
     var chart = new CanvasJS.Chart("chartContainer6",{
       backgroundColor: "#f1f1f1",
       title:{
@@ -401,26 +403,23 @@ function myFunc8(){
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.boomtlp});
     });
-    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
+    for (var i = (dataPoints.length - 2); i <= (dataPoints.length - 1); i++) {
       dataset.push({x: i, y: dataPoints[i].y}) 
     }
-
     $.each(data, function(key, value){  
       newdataPoints.push({x: key, y: value.boomtrp});
     });
-
-    for (var j = (newdataPoints.length - 5); j <= (newdataPoints.length - 1); j++) {
+    for (var j = (newdataPoints.length - 2); j <= (newdataPoints.length - 1); j++) {
       newdataset.push({x: j, y: newdataPoints[j].y}) 
     }
-
     $.each(data, function(key, value){  
       verynewdataPoint.push({x: key, y: value.boomrcc});
     });
-
-    for (var k = (verynewdataPoint.length - 5); k <= (verynewdataPoint.length - 1); k++) {
+    for (var k = (verynewdataPoint.length - 2); k <= (verynewdataPoint.length - 1); k++) {
       verynewdataset.push({x: k, y: verynewdataPoint[k].y}) 
     }
 
+    //console.log("boomrotate");
     var chart = new CanvasJS.Chart("chartContainer7",{
       backgroundColor: "#f1f1f1",
       title:{

@@ -36,7 +36,7 @@
     var oilTemp = []; 
     var motorTemp = [];
 
-    $.getJSON("http://46.101.113.34:8008/api/harvesters/oiltemp", function(otemp){ 
+    $.getJSON("http://localhost:8080/api/harvesters/oiltemp", function(otemp){ 
     //console.log(data);
     $.each(otemp, function(key, value){  
       oilTemp.push({x: key, y: value.oiltemp});     
@@ -48,7 +48,7 @@
 
     console.log(xx); 
 
-    $.getJSON("http://46.101.113.34:8008/api/harvesters/motortemp", function(mtemp){ 
+    $.getJSON("http://localhost:8080/api/harvesters/motortemp", function(mtemp){ 
     //console.log(data);
     $.each(mtemp, function(key, value){  
       motorTemp.push({x: key, y: value.motortemp});     

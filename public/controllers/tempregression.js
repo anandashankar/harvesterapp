@@ -11,7 +11,7 @@ $.getJSON("http://46.101.113.34:8008/api/harvesters/motortemp", function(tempdat
     		console.log(ab); 
 
       //push latest 70 values of motortemp in dataset array
-    	for (var i = (motorTemp.length - 70); i <= (motorTemp.length - 1); i++) {
+    	for (var i = (motorTemp.length - 50); i <= (motorTemp.length - 1); i++) {
     			dataset.push(motorTemp[i].y); 
     			//console.log(dataset); 
     	}

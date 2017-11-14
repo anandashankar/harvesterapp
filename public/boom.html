@@ -23,11 +23,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
-  <!-- simple statistics-->
-  <script src="https://unpkg.com/simple-statistics@5.1.0/dist/simple-statistics.min.js"></script>
-  <!--chart.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- canvas.js-->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="canvasjs.min.js"></script>
 
 </head>
 
@@ -69,7 +67,7 @@
           <li class="active"><a href="/machinedata">Machine Data</a>
             <ul>
               <li><a href="/analytics">Engine</a></li>
-              <li><a href="/boom">Boom</a></li>
+              <li class="active"><a href="/boom">Boom</a></li>
             </ul>
           </li>
           <li><a href="/raw">Raw data</a></li>
@@ -90,53 +88,40 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="well">
-            <h4>Average Fuel consumption:</h4>
-            <br>
-            <canvas id="myChart"></canvas>
+             <div id="chartContainer" style="height: 200px; width: 100%;"></div>
             </div>
           </div>
           <div class="col-sm-6">
-            <div class="well">
-            <h4>Last Refueled: </h4>
-            <br>
-            <table id="location" border='0.5'>
-                <tr>
-                    <th>Date: </th>
-                </tr>
-            </table>
-            <br>
-            <table id="location1" border='0.5'>
-                <tr>
-                <tr>
-                  <th>Time: </th>
-                </tr>
-            </table>
-            </div>
+          <div class="well">
+          <div id="chartContainer1" style="height: 200px; width: 100%;"></div>
           </div>
+        </div>
         </div>
 
         <div class="row">
-          <div class="col-sm-3">
+          <div class="col-sm-6">
             <div class="well">
-            <h4>Avg Engine Load Factor: </h4>
-            <h5>Monthly summary (%)</h5>
-            <br>
-            <canvas id="mypieChart"></canvas>
+             <div class="chart4" id="chartContainer2" style="height: 200px; width: 100%;"></div>   
             </div>
           </div>
-          <div class="col-sm-9">
-            <div class="well">
-            <h4>Engine Utilization: </h4>
-           </div>
+          <div class="col-sm-6">
+           <div class="well">
+            
+            </div>
          </div>       
        </div>
 
        <div class="row">         
-        <div class="col-sm-12">
+        <div class="col-sm-6">
           <div class="well">  
-          <h4>Maintenance Logs:</h4>    
+           
          </div>
        </div>  
+       <div class="col-sm-6">
+          <div class="well">  
+           
+         </div>
+       </div>
     </div>
 
    </div>
@@ -144,8 +129,9 @@
  </div>
 
 <script src="controllers/analyticsController.js"></script>
-<script type="text/javascript" src="controllers/avg.js"></script>
-<script type="text/javascript" src="controllers/load.js"></script>
+<script src="controllers/boom.js"></script>
+
+
 
 </body>
 </html>
