@@ -1,4 +1,4 @@
-
+var baseURL = 'http://localhost:8008/api/harvesters'; 
 var gaugeOptions = {
 
     chart: {
@@ -90,7 +90,7 @@ setInterval(function () {
     var point, 
         inc; 
 
-    $.getJSON("http://46.101.113.34:8008/api/harvesters/pressure", function(data2){ 
+    $.getJSON(baseURL+'/pressure', function(data2){ 
     $.each(data2, function(key, value){  
       dataPoints2.push({x: key, y: value.pressure[0]});
     });

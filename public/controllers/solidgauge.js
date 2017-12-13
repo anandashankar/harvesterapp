@@ -1,3 +1,4 @@
+var baseURL = 'http://localhost:8008/api/harvesters';
 
 var gaugeOptions = {
 
@@ -119,7 +120,7 @@ setInterval(function () {
     var point, 
         inc; 
 
-    $.getJSON("http://46.101.113.34:8008/api/harvesters/fuellevel", function(data){ 
+    $.getJSON(baseURL+'/fuellevel', function(data){ 
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.fuellevel});
     });
@@ -134,7 +135,7 @@ setInterval(function () {
 
 });
   
-    $.getJSON("http://46.101.113.34:8008/api/harvesters/oillevel", function(data1){ 
+    $.getJSON(baseURL+'/oillevel', function(data1){ 
     //console.log(data1);
     $.each(data1, function(key, value){  
       dataPoints1.push({x: key, y: value.oillevel});

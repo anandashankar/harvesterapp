@@ -67,10 +67,10 @@ app.get('/boom', function(req, res) {
 // Create our Express router
 var router = express.Router();
 
-// Initial dummy route for testing
-// http://localhost:3000/api
+var baseURL = 'http://localhost:'+port+'/api/harvesters';
+
 router.get('/', function(req, res) {
-	var obj = 'http://46.101.113.34:8008/api/harvesters/';
+	var obj = baseURL;
   res.json([{message: 'List of Harvesters', data: obj}]);
 });
 
@@ -86,13 +86,14 @@ harvestersRoute.post(function(req, res) {
   // Set the beer properties that came from the POST data
   harvester.id = req.body.id;
   harvester.step_ms = req.body.step_ms;
-  harvester.oillevel = 'http://46.101.113.34:8008/api/harvesters/oillevel';
-  harvester.fuellevel = 'http://46.101.113.34:8008/api/harvesters/fuellevel';
-  harvester.pressure = 'http://46.101.113.34:8008/api/harvesters/pressure';
-  harvester.location = 'http://46.101.113.34:8008/api/harvesters/location';
-  harvester.motortemp = 'http://46.101.113.34:8008/api/harvesters/motortemp';
-  harvester.oiltemp = 'http://46.101.113.34:8008/api/harvesters/oiltemp';
-  harvester.boom = 'http://46.101.113.34:8008/api/harvesters/boom';
+  harvester.oillevel = baseURL+'/oillevel';
+  harvester.fuellevel = baseURL+'/fuellevel';
+  harvester.pressure = baseURL+'/pressure';
+  harvester.location = baseURL+'/location';
+  harvester.motortemp = baseURL+'/motortemp';
+  harvester.oiltemp = baseURL+'/oiltemp';
+  harvester.boom = baseURL+'/boom'
+  //'http://46.101.113.34:8008/api/harvesters/boom';
   
 
   // Save the harvester and check for errors
@@ -267,9 +268,9 @@ oiltempHarvestersRoute.get(function(req, res){
 var boomHarvestersRoute = router.route('/harvesters/boom');
 boomHarvestersRoute.post(function(req, res){
   var boom = new Boom();
-  boom.boomlift = 'http://46.101.113.34:8008/api/harvesters/boom/boomlift';
-  boom.boomfold ='http://46.101.113.34:8008/api/harvesters/boom/boomfold';
-  boom.boomrotate = 'http://46.101.113.34:8008/api/harvesters/boom/boomrotate';
+  boom.boomlift = baseURL+'/boom/boomlift';
+  boom.boomfold = baseURL+'/boom/boomfold';
+  boom.boomrotate = baseURL+'/boom/boomrotate';
 
   boom.save(function(err){
     if (err)

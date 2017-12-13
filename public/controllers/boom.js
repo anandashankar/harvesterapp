@@ -1,10 +1,11 @@
+var baseURL = 'http://localhost:8008/api/harvesters';
 
 function myFunc1(){
   var dataPoints = [];
   var newdataPoints = [];
   var dataset = []; 
   var newdataset = []; 
-  $.getJSON("http://46.101.113.34:8008/api/harvesters/boom/boomlift", function(data){ 
+  $.getJSON(baseURL+'/boom/boomlift', function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.boomlcc});
@@ -74,7 +75,7 @@ function myFunc2(){
   var newdataPoints = [];
   var dataset = []; 
   var newdataset = []; 
-  $.getJSON("http://46.101.113.34:8008/api/harvesters/boom/boomfold", function(data){ 
+  $.getJSON(baseURL+'/boom/boomfold', function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.boomfcc});
@@ -142,7 +143,7 @@ function myFunc3(){
   var dataset = [];
   var newdataset = [];
   var verynewdataset = []; 
-  $.getJSON("http://46.101.113.34:8008/api/harvesters/boom/boomrotate", function(data){ 
+  $.getJSON(baseURL+'/boom/boomrotate', function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.boomtlp});

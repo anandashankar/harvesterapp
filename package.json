@@ -1,11 +1,13 @@
 {
   "name": "harvesterapp",
   "main": "server.js",
+  "version": "0.0.1",
+  "author": "ananda",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
-    "express": "^4.16.2",
-    "mongoose": "^4.6.0",
+    "express": "latest",
+    "mongoose": "latest",
     "passport": "^0.3.2",
     "passport-http": "^0.3.0"
   }

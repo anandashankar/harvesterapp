@@ -1,8 +1,9 @@
+var baseURL = 'http://localhost:8008/api/harvesters';
 var press = []; 
 var dataset = []; 
 
 //Ajax call for data
-$.getJSON("http://46.101.113.34:8008/api/harvesters/pressure", function(data){ 
+$.getJSON(baseURL+'/pressure', function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       press.push({x: key, y: value.pressure[0]});     

@@ -1,14 +1,15 @@
+var baseURL = 'http://localhost:8008/api/harvesters'; 
 
   function myFunc1(){
   var dataPoints = [];
   var dataset = []; 
-  $.getJSON("http://46.101.113.34:8008/api/harvesters/pressure", function(data){ 
+  $.getJSON(baseURL+'/pressure', function(data){ 
     //console.log(data);
     $.each(data, function(key, value){ 
       dataPoints.push({x: key, y: value.pressure[0]});
     }); 
     
-    for (var i = (dataPoints.length - 30); i <= (dataPoints.length - 1); i++) {
+    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
       dataset.push({x: i, y: dataPoints[i].y}) 
     }
     
@@ -53,7 +54,7 @@
   function myFunc2(){
   var dataPoints = [];
   var dataset = []; 
-  $.getJSON("http://46.101.113.34:8008/api/harvesters/fuellevel ", function(data){ 
+  $.getJSON(baseURL+'/fuellevel', function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.fuellevel});
@@ -104,13 +105,13 @@
   function myFunc3(){
   var dataPoints = [];
   var dataset = []; 
-  $.getJSON("http://46.101.113.34:8008/api/harvesters/oillevel", function(data){ 
+  $.getJSON(baseURL+'/oillevel', function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.oillevel});
     });
 
-    for (var i = (dataPoints.length - 2); i <= (dataPoints.length - 1); i++) {
+    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
       dataset.push({x: i, y: dataPoints[i].y})
     }
     
@@ -156,13 +157,13 @@
 function myFunc4(){
   var dataPoints = [];
   var dataset = []; 
-  $.getJSON("http://46.101.113.34:8008/api/harvesters/motortemp", function(data){ 
+  $.getJSON(baseURL+'/motortemp', function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.motortemp});
     });
 
-    for (var i = (dataPoints.length - 2); i <= (dataPoints.length - 1); i++) {
+    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
       dataset.push({x: i, y: dataPoints[i].y})
     }
     
@@ -208,13 +209,13 @@ function myFunc4(){
 function myFunc5(){
   var dataPoints = [];
   var dataset = [];
-  $.getJSON("http://46.101.113.34:8008/api/harvesters/oiltemp", function(data){ 
+  $.getJSON(baseURL+'/oiltemp', function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.oiltemp});
     });
 
-    for (var i = (dataPoints.length - 10); i <= (dataPoints.length - 1); i++) {
+    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
       dataset.push({x: i, y: dataPoints[i].y}) 
     }
     
@@ -262,7 +263,7 @@ function myFunc6(){
   var newdataPoints = [];
   var dataset = []; 
   var newdataset = []; 
-  $.getJSON("http://46.101.113.34:8008/api/harvesters/boom/boomlift", function(data){ 
+  $.getJSON(baseURL+'/boom/boomlift', function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.boomlcc});
@@ -331,7 +332,7 @@ function myFunc7(){
   var newdataPoints = [];
   var dataset = []; 
   var newdataset = []; 
-  $.getJSON("http://46.101.113.34:8008/api/harvesters/boom/boomfold", function(data){ 
+  $.getJSON(baseURL+'/boom/boomfold', function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.boomfcc});
@@ -398,24 +399,24 @@ function myFunc8(){
   var dataset = [];
   var newdataset = [];
   var verynewdataset = []; 
-  $.getJSON("http://46.101.113.34:8008/api/harvesters/boom/boomrotate", function(data){ 
+  $.getJSON(baseURL+'/boom/boomrotate', function(data){ 
     //console.log(data);
     $.each(data, function(key, value){  
       dataPoints.push({x: key, y: value.boomtlp});
     });
-    for (var i = (dataPoints.length - 2); i <= (dataPoints.length - 1); i++) {
+    for (var i = (dataPoints.length - 5); i <= (dataPoints.length - 1); i++) {
       dataset.push({x: i, y: dataPoints[i].y}) 
     }
     $.each(data, function(key, value){  
       newdataPoints.push({x: key, y: value.boomtrp});
     });
-    for (var j = (newdataPoints.length - 2); j <= (newdataPoints.length - 1); j++) {
+    for (var j = (newdataPoints.length - 5); j <= (newdataPoints.length - 1); j++) {
       newdataset.push({x: j, y: newdataPoints[j].y}) 
     }
     $.each(data, function(key, value){  
       verynewdataPoint.push({x: key, y: value.boomrcc});
     });
-    for (var k = (verynewdataPoint.length - 2); k <= (verynewdataPoint.length - 1); k++) {
+    for (var k = (verynewdataPoint.length - 5); k <= (verynewdataPoint.length - 1); k++) {
       verynewdataset.push({x: k, y: verynewdataPoint[k].y}) 
     }
 
@@ -450,7 +451,7 @@ function myFunc8(){
       {
         type: "stepLine",
         name: "tlp",
-        color: "rgba(102, 102, 255, 0.5)",
+        color: "rgba(0, 128, 0, 0.5)",
         dataPoints : dataset
       },
       {
