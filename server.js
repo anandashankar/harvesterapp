@@ -67,7 +67,7 @@ app.get('/boom', function(req, res) {
 // Create our Express router
 var router = express.Router();
 
-var baseURL = 'http://localhost:'+port+'/api/harvesters';
+var baseURL = 'http://204.189.49.127:'+port+'/api/harvesters';
 
 router.get('/', function(req, res) {
 	var obj = baseURL;

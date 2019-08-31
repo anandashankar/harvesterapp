@@ -1,4 +1,4 @@
-var baseURL = 'http://46.101.113.34:8008/api/harvesters';
+var baseURL = 'http://206.189.49.127:8008/api/harvesters';
 
 var app = angular.module('autoRefreshApp', []);
 app.controller('autoRefreshController', ['$scope', '$http', '$timeout', function($scope, $http, $interval) {

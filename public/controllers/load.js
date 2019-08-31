@@ -1,4 +1,4 @@
-var baseURL = 'http://localhost:8008/api/harvesters'; 
+var baseURL = 'http://206.189.49.127:8008/api/harvesters'; 
 var press = []; 
 var idle=0, inactive=0, working=0, a, b, c; 
 
