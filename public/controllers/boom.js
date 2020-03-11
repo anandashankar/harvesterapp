@@ -1,4 +1,4 @@
-var baseURL = 'http://206.189.49.127:8008/api/harvesters';
+var baseURL = 'http://localhost:8080/api/harvesters';
 
 function myFunc1(){
   var dataPoints = [];

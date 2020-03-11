@@ -15,8 +15,10 @@ var Boom = require('./models/boom');
 var Boomlift = require('./models/boomlift');
 var Boomfold = require('./models/boomfold');
 var Boomrotate = require('./models/boomrotate');
-var cookieParser = require('cookie-parser');
 
+var Prop = require('./models/prop');
+
+var cookieParser = require('cookie-parser');
 var favicon = require('serve-favicon'); 
 var path = require('path');
 
@@ -39,8 +41,8 @@ app.use(bodyParser.urlencoded({
 
 app.use(morgan('dev'));
 
-// Use environment defined port or 8008
-var port = process.env.PORT || 8008;
+// Use environment defined port or 8080
+var port = process.env.PORT || 80;
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json()); 
@@ -67,7 +69,7 @@ app.get('/boom', function(req, res) {
 // Create our Express router
 var router = express.Router();
 
-var baseURL = 'http://204.189.49.127:'+port+'/api/harvesters';
+var baseURL = 'http://localhost/api/harvesters';
 
 router.get('/', function(req, res) {
 	var obj = baseURL;
@@ -89,11 +91,10 @@ harvestersRoute.post(function(req, res) {
   harvester.oillevel = baseURL+'/oillevel';
   harvester.fuellevel = baseURL+'/fuellevel';
   harvester.pressure = baseURL+'/pressure';
-  harvester.location = baseURL+'/location';
   harvester.motortemp = baseURL+'/motortemp';
   harvester.oiltemp = baseURL+'/oiltemp';
-  harvester.boom = baseURL+'/boom'
-  //'http://46.101.113.34:8008/api/harvesters/boom';
+  harvester.boom = baseURL+'/boom';
+  harvester.prop = baseURL+'/prop'
   
 
   // Save the harvester and check for errors
@@ -362,6 +363,32 @@ boomrotateHarvestersRoute.get(function(req, res){
     res.json(boomrotate);
   });
 });
+
+//******************creating route for propeller************************ 
+/*Propeller blade*/
+var propHarvestersRoute = router.route('/harvesters/prop');
+propHarvestersRoute.post(function(req, res){
+  var prop = new Prop();
+  prop.rpm = req.body.rpm;
+  prop.force = req.body.force;
+
+  prop.save(function(err){
+    if (err)
+      res.send(err);
+    res.json({ message: 'Propeller data', data: prop });
+  });
+});
+
+//creating new route using endpoint /harvesters/boom/boomlift for GET
+propHarvestersRoute.get(function(req, res){
+  Prop.find(function(err, prop){
+    if(err)
+      res.send(err);
+    res.json(prop);
+  });
+});
+
+//***********************************************************************
 
 
 // Create endpoint /api/harvesters for GET
